@@ -2,19 +2,25 @@ import About from './../../assets/About.jpg'
 
 function H_section3() {
   return (
-    <div className="bg-[#F1F1F1] flex flex-col items-center gap-[40px] text-black p-[50px]">
+    <div className="bg-[#F1F1F1] flex flex-col items-center gap-[50px] text-black p-[50px] ">
       <div className="text-[40px] ">About Us</div>
-      <div className='w-[100%] flex justify-around'>
-         <div className='max-h-[400px] w-[400px] rounded-[10px] overflow-hidden'>
+      <div className='w-[100%] flex justify-around flex-wrap'>
+         <div className='min-h-[300px] max-w-[500px] rounded-[10px] overflow-hidden'>
         <img src={About} alt="image" />
       </div>
 
        <div className="max-w-[400px] ">
-        Founded in 2024, Crowd Zero was created to elevate the shopping
+       <div className='pb-[30px]'> Founded in 2024, Crowd Zero was created to elevate the shopping
         experience. Here, your comfort and convenience come first. Find stylish
         essentials from a wide range of brands and enjoy hassle-free checkout
         and delivery. Zero in on what you want, minus the crowds and long lines.
-        Sit back, relax, and shop to your heart's content.
+        Sit back, relax, and shop to your heart's content.</div>
+
+        <div> Founded in 2024, Crowd Zero was created to elevate the shopping
+        experience. Here, your comfort and convenience come first. Find stylish
+        essentials from a wide range of brands and enjoy hassle-free checkout
+        and delivery. Zero in on what you want, minus the crowds and long lines.
+        Sit back, relax, and shop to your heart's content.</div>
       </div>
       </div>
      

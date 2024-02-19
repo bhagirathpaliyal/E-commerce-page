@@ -1,28 +1,45 @@
 import { useEffect, useState } from "react";
 import H_section0 from "../Home/H_section0";
+import Footer from "../Footer/Footer";
+import Item from "../Men/Item";
 
 function Jewelery(){
-const [data, setdata] = useState("")
-    useEffect(() => {
-         
+
+
+            const [product, setProduct] = useState([]);
+  useEffect(() => {
     fetch('https://fakestoreapi.com/products')
-            .then(res=>res.json())
-            .then(dataa=>setdata(dataa))
-    
-    
-    }, [])
-    
- 
-            console.log(data);
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => {
+        console.log(data);
+        setProduct(data);
+      });
+  }, []);
     return(
-        <div>
+        <div className="bg-[#F1F1F1] flex flex-col gap-[50px]">
             <H_section0/>
-         {/* {data.Map((data)=>{
-            <div>{data}</div>
-         })} */}
-         jewelery
+
+
+
+          
+            <div className="flex  justify-evenly ">
+              
+            <Item image={product[1].image}/>
+            <Item image={product[2].image}/>
+            <Item image={product[3].image}/>
+            <Item image={product[4].image}/>
+            <Item image={product[5].image}/>
+            </div>
+
+            
+            <Footer/>
+        
+        
         </div>
     )
 }
 
 export default Jewelery;
+

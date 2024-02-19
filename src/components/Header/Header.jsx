@@ -6,14 +6,14 @@ function Header(){
 
     return(
         
-       <div className="w-full bg-[#0055E9] text-white flex items-center justify-between fixed top-[0px] border-b-[2px] border-solid border-white z-10">
+       <header className="w-full bg-[#0055E9] text-white flex items-center justify-between fixed top-[0px] border-b-[2px] border-solid border-white z-10">
          <Logo/>
         <Navbar/>
         <Header_right/>
       
        
         
-        </div>
+        </header>
     )
 }
 

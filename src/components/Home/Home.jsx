@@ -1,3 +1,4 @@
+import Fetch from "../Fetch";
 import Footer from "../Footer/Footer";
 import Header from "../Header/Header";
 import H_section0 from "./H_section0";
@@ -10,7 +11,7 @@ import H_section5 from "./H_section5";
 function Home(){
 
     return(
-        <div >
+        <main >
         <Header/>
         <H_section0/>
         <H_section1/>
@@ -18,8 +19,9 @@ function Home(){
         <H_section3/>
         <H_section4/>
         <H_section5/>
+        {/* <Fetch/> */}
         <Footer/>
-        </div>
+        </main>
     )
 }
 

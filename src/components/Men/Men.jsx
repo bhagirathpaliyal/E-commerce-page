@@ -1,11 +1,22 @@
 import Footer from "../Footer/Footer";
+import Header from "../Header/Header";
 import H_section0 from "../Home/H_section0";
-import Item from "../Men/Item";
+import Item from "./Item";
 
-function Electronics(){
+function Men(){
+
     return(
-        <div className="bg-[#0055E9] flex flex-col gap-[50px]">
-            <H_section0/>
+        <div className="bg-[#F1F1F1] flex flex-col gap-[50px]">
+           
+           <H_section0/>
+          <div className="flex  justify-evenly">
+            <Item/>
+            <Item/>
+            <Item/>
+            <Item/>
+            <Item/>
+            </div>
+
             <div className="flex  justify-evenly">
             <Item/>
             <Item/>
@@ -13,16 +24,10 @@ function Electronics(){
             <Item/>
             <Item/>
             </div>
-            <div className="flex  justify-evenly">
-            <Item/>
-            <Item/>
-            <Item/>
-            <Item/>
-            <Item/>
-            </div>
+           
            <Footer/>
         </div>
     )
 }
 
-export default Electronics;
+export default Men;
