@@ -4,9 +4,9 @@ function H_section4(){
 
     return(
         <div className="bg-[#0055E9] flex flex-col items-center text-white p-[50px] gap-[50px]" >
-    <div className="text-[40px]">Our Customer service</div>
-       <div className="flex justify-evenly w-[100%] ">
-        <div className="flex flex-col items-center w-[200px] gap-[20px]">
+    <div className="text-[30px] md:text-[40px] text-center">Our Customer service</div>
+       <div className="flex justify-evenly w-[100%] text-center gap-[20px] flex-wrap text-[14px] md:text-[18px]">
+        <div className="flex flex-col items-center w-[200px] gap-[20px] ">
             <h2 className="font-bold">Size Guide</h2>
             <p>Sizes vary between brands but don't worry, you'll find a chart alongside each item. We also include size recommendations based on customer reviews and your previous purchases.</p>
         </div>

@@ -1,27 +1,21 @@
-import Footer from "../Footer/Footer";
+
 import H_section0 from "../Home/H_section0";
 import Item from "../Men/Item";
 
-function Electronics(){
+function Electronics(prop){
     return(
-        <div className="bg-[#0055E9] flex flex-col gap-[50px]">
-            <H_section0/>
-            <div className="flex  justify-evenly">
-            <Item/>
-            <Item/>
-            <Item/>
-            <Item/>
-            <Item/>
-            </div>
-            <div className="flex  justify-evenly">
-            <Item/>
-            <Item/>
-            <Item/>
-            <Item/>
-            <Item/>
-            </div>
-           <Footer/>
-        </div>
+        <div className="bg-[#0055E9] flex flex-col gap-[50px] pb-[50px]">
+      <H_section0 />
+
+      <div className="flex flex-wrap gap-[20px] justify-center">
+        {prop.product.length > 0 &&
+          prop.product.slice(0, 10).map((item, index) => (
+            <Item key={index} data={item} />
+          ))}
+      </div>
+
+     
+    </div>
     )
 }
 
