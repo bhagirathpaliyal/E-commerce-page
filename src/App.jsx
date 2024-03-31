@@ -6,7 +6,7 @@ import Jewelery from "./components/Jewelery/Jewelery"
 import Electronics from "./components/Electronics/Electronics"
 import Header from "./components/Header/Header"
 import Login from "./components/Login/Login"
-import { useEffect, useState } from "react"
+import { useEffect, useState } from "react"  
 import Footer from "./components/Footer/Footer"
 
 function App() {
