@@ -1,3 +1,4 @@
+import Footer from "../Footer/Footer";
 import H_section0 from "./H_section0";
 import H_section1 from "./H_section1";
 import H_section2 from "./H_section2";
@@ -14,6 +15,7 @@ function Home(prop) {
       <H_section3 />
       <H_section4 />
       <H_section5 />
+      <Footer/>
     </main>
   );
 }

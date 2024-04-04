@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { ReactTyped, Typed } from "react-typed";
 function H_section1() {
   return (
-    <div className="  bg-hero-image h-[100vh]  bg-cover  bg-no-repeat bg-bottom  p-[50px] flex flex-col justify-around items-center  text-black ">
+    <div className="  bg-hero-image h-[100vh]  bg-cover  bg-no-repeat bg-bottom   flex flex-col justify-around items-center  text-black ">
       <div className="flex flex-col items-center">
         <div className="border-b-[2px] border-solid border-[#0055E9] mt-[40px] rounded-[7px] ">
           <Link to="Man">

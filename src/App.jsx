@@ -26,7 +26,7 @@ function App() {
 // const [data, setdata] = useState('bp')
   return (
     <> <BrowserRouter>
-     <div className="container mx-auto border-[2px] border-solid border-black">
+     <div className=" mx-auto ">
      <Header/>
       <Routes>
         <Route path="/" element={<Home product={product}/>}/>
@@ -36,7 +36,7 @@ function App() {
         <Route path="Electronics" element={<Electronics product={product} />}/>      
         <Route path="Login" element={<Login/>}/>  
       </Routes>
-      <Footer />
+      
       
     </div> </BrowserRouter>
     </>

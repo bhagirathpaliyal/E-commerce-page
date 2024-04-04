@@ -31,7 +31,7 @@ function H_section2() {
 
   (
     <Link key={index} to={data==="men's clothing" ?"men":data ==="women's clothing"?"women":data}>
-<div  className="max-w-[100px] md:max-w-[200px] pb-[20px] flex flex-col items-center gap-[10px] ">
+<div  className="max-w-[200px]  pb-[20px] flex flex-col items-center gap-[10px] ">
   <div className="w-[100%] rounded-[10px] overflow-hidden"><img src={man} alt="image" /></div>
   <div>
     <h2 >{data}</h2>
@@ -44,47 +44,6 @@ function H_section2() {
 
 
 
-
-
-{/* 2 */}
-{/* 
-<Link to='women'>
-<div className=" max-w-[200px] pb-[20px] flex flex-col items-center gap-[10px]">
-  <div className="w-[100%] rounded-[10px] overflow-hidden"><img src={man} alt="image" /></div>
-  <div>
-    <h2>{dataa[3]}</h2>
-  </div>
-
-</div>
-</Link> */}
-
-
-
-
-{/* 3 */}
-
-{/* <Link to='jewelery'>
-<div className=" max-w-[200px] pb-[20px] flex flex-col items-center gap-[10px]">
-  <div className="w-[100%] rounded-[10px] overflow-hidden"><img src={man} alt="image" /></div>
-  <div>
-    <h2>{dataa[1]}</h2>
-  </div>
-
-</div>
-</Link> */}
-
-
-
-
-{/* 4 */}
-{/* <Link to='electronics'>
-<div className=" max-w-[200px] pb-[20px] flex flex-col items-center gap-[10px]">
-  <div className="w-[100%] rounded-[10px] overflow-hidden"><img src={man} alt="image" /></div>
-  <div>
-    <h2>{dataa[0]}</h2>
-  </div>
-
-</div></Link> */}
 
 
 
