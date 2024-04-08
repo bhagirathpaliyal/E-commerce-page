@@ -13,7 +13,7 @@ function H_section2() {
         return res.json();
       })
       .then((data) => {
-        console.log(data);
+       
         setdataa(data);
       });
   }, []);
