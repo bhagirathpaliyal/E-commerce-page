@@ -7,34 +7,23 @@ import Electronics from "./components/Electronics/Electronics"
 import Header from "./components/Header/Header"
 import Login from "./components/Login/Login"
 import { useEffect, useState } from "react"  
-import Footer from "./components/Footer/Footer"
 import SignUp from "./components/SignUp/SignUp"
 
 function App() {
 
   
-  const [product, setProduct] = useState([]);
+ 
 
-  useEffect(() => {
-    fetch('https://fakestoreapi.com/products')
-      .then((res) => res.json())
-      .then((data) => {
-        
-        setProduct(data);
-      });
-  }, []);
-
-// const [data, setdata] = useState('bp')
   return (
     <> <BrowserRouter>
      <div className=" mx-auto ">
      <Header/>
       <Routes>
-        <Route path="/" element={<Home product={product}/>}/>
-        <Route path="/Men" element={<Men product={product}/>}/>
-        <Route path="/Women" element={<Women product={product}/>}/>
-        <Route path="/Jewelery" element={<Jewelery product={product}/>}/>
-        <Route path="/Electronics" element={<Electronics product={product} />}/>      
+        <Route path="/" element={<Home />}/>
+        <Route path="/Men" element={<Men />}/>
+        <Route path="/Women" element={<Women />}/>
+        <Route path="/Jewelery" element={<Jewelery />}/>
+        <Route path="/Electronics" element={<Electronics  />}/>      
         <Route path="/Login" element={<Login/>}/>
           <Route path="/SignUp" element={<SignUp/>}/>
          

@@ -1,9 +1,22 @@
+import { useEffect, useState } from "react";
 import Footer from "../Footer/Footer";
 import H_section0 from "../Home/H_section0";
 
 import Item from "../Men/Item";
 
-function Jewelery({product}) {
+function Jewelery() {
+
+
+  const [product, setProduct] = useState([]);
+
+  useEffect(() => {
+    fetch("https://fakestoreapi.com/products/category/jewelery")
+      .then((res) => res.json())
+      .then((data) => {
+        
+        setProduct(data);
+      });
+  }, []);
 
 
   return (
