@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom/dist";
+import { Link, NavLink } from "react-router-dom/dist";
 
 function Header_left() {
   const [isOpen, setIsOpen] = useState(false);
@@ -16,24 +16,58 @@ function Header_left() {
       >
         <ul
           onClick={() => setIsOpen(!isOpen)}
-          className="flex flex-col gap-[30px] text-[24px] p-[30px] "
+          className="flex flex-col gap-[30px] text-[14px] p-[30px] "
         >
-          <Link to="/">
-            <li>Home</li>
-          </Link>
-          <Link to="Men">
-            <li>Men</li>
-          </Link>
-          <Link to="Women">
-            <li>Women</li>
-          </Link>
-          <Link to="Jewelery">
-            <li>jewelery</li>
-          </Link>
-          <Link to="Electronics">
-            <li>electronics</li>
-          </Link>
-        </ul>
+        <NavLink
+              to={"/"}
+              style={({ isActive }) => {
+                return isActive ? { color: "#000000" } : {};
+              }}
+            >
+              <li>Home</li>
+            </NavLink>
+            <NavLink
+              to={"/AllProducts"}
+              style={({ isActive }) => {
+                return isActive ? { color: "#000000" } : {};
+              }}
+            >
+              <li>All </li>
+            </NavLink>
+            <NavLink
+              to={"/Men"}
+              style={({ isActive }) => {
+                return isActive ? { color: "#000000" } : {};
+              }}
+            >
+              <li>Men</li>
+            </NavLink>
+            <NavLink
+              to={"/Women"}
+              style={({ isActive }) => {
+                return isActive ? { color: "#000000" } : {};
+              }}
+            >
+              <li>Women</li>
+            </NavLink>
+            <NavLink
+              to={"/jewelery"}
+              style={({ isActive }) => {
+                return isActive ? { color: "#000000" } : {};
+              }}
+            >
+              <li>jewelery</li>
+            </NavLink>
+
+            <NavLink
+              to={"/Electronics"}
+              style={({ isActive }) => {
+                return isActive ? { color: "#000000" } : {};
+              }}
+            >
+              <li>electronics</li>
+            </NavLink>
+              </ul>
       </div>
     </div>
   );
