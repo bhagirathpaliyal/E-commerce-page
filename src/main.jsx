@@ -5,10 +5,10 @@ import './index.css'
 import { FirebaseProvider } from './components/context/firebase.jsx'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
+  // <React.StrictMode>
     <FirebaseProvider>
       <App />
     </FirebaseProvider>
     
-  </React.StrictMode>
+  // </React.StrictMode>
 )
