@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { ReactTyped, Typed } from "react-typed";
 function H_section1() {
   return (
-    <div className="  bg-hero-image h-[100vh]  bg-cover  bg-no-repeat bg-bottom   flex flex-col justify-around items-center  text-black ">
+    <div id="section1" className="  bg-hero-image h-[100vh]  bg-cover  bg-no-repeat bg-bottom   flex flex-col justify-around items-center  text-black ">
      
       
       <div className="text-[20px] md:text-[24px] text-center">

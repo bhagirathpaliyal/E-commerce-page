@@ -8,7 +8,7 @@ export default {
   theme: {
     extend: {
       backgroundImage: {
-        'hero-image': "url('./src/assets/hero.jpg')",
+        'hero-image': "url('./assets/hero.jpg')",
       },
 
       keyframes: {
