@@ -53,8 +53,23 @@ export const FirebaseProvider = ({ children }) => {
       .catch((err) => console.log("Error logging in:", err));
   };
 
+
+
+
+  const scrollToSection = (id) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+
+
+
+
+
   return (
-    <firebaseContext.Provider value={{ user, signupUserWithEmailAndPassword, loginUserWithEmailAndPassword ,onAuthStateChanged}}>
+    <firebaseContext.Provider value={{ user, signupUserWithEmailAndPassword, loginUserWithEmailAndPassword ,onAuthStateChanged ,scrollToSection}}>
       {children}
     </firebaseContext.Provider>
   );

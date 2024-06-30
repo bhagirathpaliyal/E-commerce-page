@@ -11,6 +11,7 @@ import SignUp from './components/SignUp/SignUp';
 import Profile from './components/Profile';
 import { FirebaseProvider } from './components/context/firebase';
 import AllProducts from './components/AllProducts';
+import Products from './components/Products';
 
 function App() {
   return (
@@ -20,14 +21,18 @@ function App() {
           <Header />
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/Men" element={<Men />} />
-            <Route path="/Women" element={<Women />} />
-            <Route path="/Jewelery" element={<Jewelery />} />
-            <Route path="/Electronics" element={<Electronics />} />
+            
             <Route path="/Login" element={<Login />} />
             <Route path="/SignUp" element={<SignUp />} />
             <Route path="/Profile" element={<Profile />} />
-            <Route path="/AllProducts" element={<AllProducts/>} />
+            <Route path="/Products" element={<Products/>} >
+            <Route path="/Products/AllProducts" element={<AllProducts/>} />
+            <Route path="/Products/Men" element={<Men />} />
+            <Route path="/Products/Women" element={<Women />} />
+            <Route path="/Products/Jewelery" element={<Jewelery />} />
+            <Route path="/Products/Electronics" element={<Electronics />} />
+            </Route>
+
           </Routes>
         </div>
       </BrowserRouter>

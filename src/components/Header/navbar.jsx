@@ -1,60 +1,28 @@
-import { Link, NavLink } from "react-router-dom";
+import {  Link } from "react-router-dom";
+import { useFirebase } from "../context/firebase";
 
 function Navbar(){
 
+  const { scrollToSection } = useFirebase();
     return(
         <nav>
 
       <ul className=" flex gap-[20px] max-sm:hidden text-[14px]">
-      <NavLink
+             
+           <Link
               to={"/"}
-              style={({ isActive }) => {
-                return isActive ? { color: "#000000" } : {};
-              }}
-            >
-              <li>Home</li>
-            </NavLink>
-            <NavLink
-              to={"/AllProducts"}
-              style={({ isActive }) => {
-                return isActive ? { color: "#000000" } : {};
-              }}
-            >
-              <li>All</li>
-            </NavLink>
-            <NavLink
-              to={"/Men"}
-              style={({ isActive }) => {
-                return isActive ? { color: "#000000" } : {};
-              }}
-            >
-              <li>Men</li>
-            </NavLink>
-            <NavLink
-              to={"/Women"}
-              style={({ isActive }) => {
-                return isActive ? { color: "#000000" } : {};
-              }}
-            >
-              <li>Women</li>
-            </NavLink>
-            <NavLink
-              to={"/jewelery"}
-              style={({ isActive }) => {
-                return isActive ? { color: "#000000" } : {};
-              }}
-            >
-              <li>jewelery</li>
-            </NavLink>
+              
+            ><li><button onClick={() => scrollToSection('section1')}>Home</button></li>
+              
+            </Link>
+            
+              <li><button onClick={() => scrollToSection('section2')}>Products</button></li>
+            
+              <li><button onClick={() => scrollToSection('section3')}>About</button></li>
+              <li><button onClick={() => scrollToSection('section4')}>Services</button></li>
+              <li><button onClick={() => scrollToSection('section5')}>Footer</button></li>
 
-            <NavLink
-              to={"/Electronics"}
-              style={({ isActive }) => {
-                return isActive ? { color: "#000000" } : {};
-              }}
-            >
-              <li>electronics</li>
-            </NavLink>
+            
       
     
       
