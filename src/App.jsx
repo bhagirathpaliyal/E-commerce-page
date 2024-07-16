@@ -16,10 +16,10 @@ import Products from './components/Products';
 function App() {
   return (
     <FirebaseProvider>
-      <BrowserRouter>
+      <BrowserRouter basename='E-commerce-page'>
         <div className="mx-auto">
           <Header />
-          <Routes>
+          <Routes >
             <Route path="/" element={<Home />} />
             
             <Route path="/Login" element={<Login />} />
