@@ -12,6 +12,7 @@ import Profile from './components/Profile';
 import { FirebaseProvider } from './components/context/firebase';
 import AllProducts from './components/AllProducts';
 import Products from './components/Products';
+import Cart from './components/Cart';
 
 function App() {
   return (
@@ -26,12 +27,13 @@ function App() {
             <Route path="/SignUp" element={<SignUp />} />
             <Route path="/Profile" element={<Profile />} />
             <Route path="/Products" element={<Products/>} >
-            <Route path="/Products/AllProducts" element={<AllProducts/>} />
-            <Route path="/Products/Men" element={<Men />} />
-            <Route path="/Products/Women" element={<Women />} />
-            <Route path="/Products/Jewelery" element={<Jewelery />} />
-            <Route path="/Products/Electronics" element={<Electronics />} />
+               <Route path="/Products/AllProducts" element={<AllProducts/>} />
+               <Route path="/Products/Men" element={<Men />} />
+               <Route path="/Products/Women" element={<Women />} />
+               <Route path="/Products/Jewelery" element={<Jewelery />} />
+               <Route path="/Products/Electronics" element={<Electronics />} />
             </Route>
+            <Route path="/cart" element={<Cart />} />
 
           </Routes>
         </div>
