@@ -1,6 +1,7 @@
 // cartSlice.js
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-// import { db } from './firebaseConfig';
+import { db } from '../../context/firebase';
+
 
 export const fetchCartItems = createAsyncThunk(
   'cart/fetchCartItems',

@@ -7,6 +7,8 @@ import {
   onAuthStateChanged,
 } from "firebase/auth";
 
+import { getFirestore } from "firebase/firestore";
+
 const firebaseConfig = {
   apiKey: "AIzaSyDt0dh0FRm5t3T0WZMMURin0-SFJsU8dGg",
   authDomain: "e-commerce-page-538f5.firebaseapp.com",
@@ -23,6 +25,7 @@ export const firebaseAuth = getAuth(firebaseApp);
 const firebaseContext = createContext(null);
 
 export const useFirebase = () => useContext(firebaseContext);
+export const db =getFirestore(firebaseApp)
 
 export const FirebaseProvider = ({ children }) => {
   const [user, setUser] = useState(null);
