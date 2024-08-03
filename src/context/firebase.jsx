@@ -6,6 +6,7 @@ import {
   signInWithEmailAndPassword,
   onAuthStateChanged,
 } from "firebase/auth";
+import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDt0dh0FRm5t3T0WZMMURin0-SFJsU8dGg",
@@ -23,10 +24,7 @@ export const firebaseAuth = getAuth(firebaseApp);
 const firebaseContext = createContext(null);
 
 export const useFirebase = () => useContext(firebaseContext);
-<<<<<<< Updated upstream:src/components/context/firebase.jsx
-=======
 export const db = getFirestore(firebaseApp)
->>>>>>> Stashed changes:src/context/firebase.jsx
 
 export const FirebaseProvider = ({ children }) => {
 
