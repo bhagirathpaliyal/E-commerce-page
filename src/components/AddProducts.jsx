@@ -15,44 +15,48 @@ const AddProducts = () => {
   const [price ,setPrice]=useState(0)
 
   const dispatch = useDispatch();
-  const cartItems = useSelector((state) => state.cart.items);
-  const cartStatus = useSelector((state) => state.cart.status);
+  const products = useSelector((state) => state.product.items);
+  const productstatus = useSelector((state) => state.product.status);
 
   useEffect(() => {
     if (user) {
-      dispatch(fetchCartItems(user.uid));
+      dispatch(fetchProduct(user.uid));
     }
   }, [user, dispatch]);
 
+  
+
   const handleAddToCart = (item) => {
     if (user) {
-      dispatch(addToCart({ userId: user.uid, item }));
+      dispatch(addProduct({ userId: user.uid, item })).then(function(){dispatch(fetchProduct(user.uid))});
     }
   };
 
-console.log(cartItems)
+console.log(products)
 console.log(user)
   return (
     <div className='mt-[66px] w-[100dvw] h-[100dvh] flex flex-col  justify-center items-center gap-2' >
       <h2>Add Your Product</h2>
       <label htmlFor="Product">Product Name</label>
-      <input type="text" id='Product' onChange={(e)=>setName(e.target.value)} value={name}/>
+      <input className='border p-1 rounded-[5px]' type="text" id='Product' onChange={(e)=>setName(e.target.value)} value={name}/>
 
       <label htmlFor="Price">Product Price</label>
-      <input type="text" id='Price' onChange={(e) => setPrice(e.target.value)} value={price}/>
+      <input className='border p-1 rounded-[5px]' type="text" id='Price' onChange={(e) => setPrice(e.target.value)} value={price}/>
 
-      <button onClick={() =>{ handleAddToCart({ name: name,price:price }),setName(''),setName(0)}}>
+      <button onClick={() =>{ handleAddToCart({ name: name,price:price }),setName(''),setPrice(0)}}>
         Add Product
       </button>
 
 
-      <div>
-      <ul>
-        {cartItems.map((item, index) => (
-            <div>
-                <li> {user.email}</li>
+      <div className='mt-[30px]'>
+      <ul className='flex gap-6'>
+        {products.map((item, index) => (
+            <div className='border p-2 rounded-[5px]'>
+            
+          <li> {item.merchant.name}</li>
           <li key={index}>{item.name} </li>
           <li>{item.price} </li>
+          
           </div>
         ))}
       </ul>
