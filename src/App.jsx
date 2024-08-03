@@ -9,11 +9,8 @@ import Header from './components/Header/Header';
 import Login from './components/Login/Login';
 import SignUp from './components/SignUp/SignUp';
 import Profile from './components/Profile';
-import { FirebaseProvider } from './context/firebase';
 import AllProducts from './components/AllProducts';
 import Products from './components/Products';
-<<<<<<< Updated upstream
-=======
 import Cart from './components/Cart';
 import { useDispatch } from 'react-redux';
 import { setUser } from "./components/store/feature/authSlice";
@@ -21,7 +18,6 @@ import { UserTypeSelector } from './components/UserTypeSelecctor';
 import { UserTypeSelectorLogin } from './components/UserTypeSelecctorLogin';
 import AddProducts from './components/AddProducts';
 
->>>>>>> Stashed changes
 
 function App() {
 const dispatch =useDispatch()
@@ -32,7 +28,7 @@ useEffect(()=>{
   
 },[])
   return (
-    <FirebaseProvider>
+   
       <BrowserRouter basename='E-commerce-page'>
         <div className="mx-auto">
           <Header />
@@ -49,16 +45,13 @@ useEffect(()=>{
             <Route path="/Products/Jewelery" element={<Jewelery />} />
             <Route path="/Products/Electronics" element={<Electronics />} />
             </Route>
-<<<<<<< Updated upstream
-=======
             <Route path="/cart" element={<Cart />} />
             <Route path="/AddProducts" element={<AddProducts />} />
->>>>>>> Stashed changes
 
           </Routes>
         </div>
       </BrowserRouter>
-    </FirebaseProvider>
+
   );
 }
 
