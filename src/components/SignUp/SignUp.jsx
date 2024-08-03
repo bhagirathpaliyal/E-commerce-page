@@ -1,26 +1,45 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { useFirebase } from "../context/firebase";
+import { useFirebase } from "../../context/firebase";
+import { addUser } from "../store/feature/authSlice";
+import { useSelector, useDispatch } from 'react-redux';
 
-const SignUp = () => {
-  const { user, signupUserWithEmailAndPassword } = useFirebase();
 
+const SignUp = ({isMerchant}) => {
+  const { signupUserWithEmailAndPassword } = useFirebase();
+
+
+  const dispatch = useDispatch();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const userOrMerchant = isMerchant ? "Merchant" : "User"
+
+  const userState = useSelector((state) => {
+    return state?.auth
+  });
+
 
   const navigate = useNavigate();
 
+
   useEffect(() => {
-    if (user) {
+    if (userState.user) {
       navigate("/Profile");
+      console.log(userState)
     }
-  }, [user]);
+  }, [userState]);
+
+
 
   return (
-    <div className="h-[100vh] w-[100vw]  flex flex-col justify-center items-center">
-      <div className=" flex flex-col gap-[10px] border border-blue-100 hover:border-blue-400 rounded-[10px] p-[20px]">
-        <div className="text-center font-medium">SignUp Form</div>
+    <div className="  flex flex-col justify-center items-center">
+
+
+      <div className=" flex flex-col gap-[10px]">
+
+        <div className="text-center font-medium">SignUp as {userOrMerchant}</div>
+        {userState.error && <label>{userState.error}</label>}
         <label htmlFor="Name">Name</label>
         <input
           type="text"
@@ -57,7 +76,9 @@ const SignUp = () => {
         />
 
         <button
-          onClick={() => signupUserWithEmailAndPassword(email, password)}
+          onClick={() => {
+            dispatch(addUser({ isMerchant, name, email, password, signupUserWithEmailAndPassword }));
+          }}
           className="bg-[#0055E9] w-[100%] rounded-[5px] text-white"
         >
           SignUp

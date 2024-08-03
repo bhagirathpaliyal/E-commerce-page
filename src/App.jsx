@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Men from './components/Men/Men';
 import Home from './components/Home/Home';
@@ -9,21 +9,34 @@ import Header from './components/Header/Header';
 import Login from './components/Login/Login';
 import SignUp from './components/SignUp/SignUp';
 import Profile from './components/Profile';
-import { FirebaseProvider } from './components/context/firebase';
 import AllProducts from './components/AllProducts';
 import Products from './components/Products';
+import Cart from './components/Cart';
+import { useDispatch } from 'react-redux';
+import { setUser } from "./components/store/feature/authSlice";
+import { UserTypeSelector } from './components/UserTypeSelecctor';
+import { UserTypeSelectorLogin } from './components/UserTypeSelecctorLogin';
+import AddProducts from './components/AddProducts';
+
 
 function App() {
+const dispatch =useDispatch()
+
+useEffect(()=>{
+
+  dispatch(setUser(JSON.parse(localStorage.getItem('user'))))
+  
+},[])
   return (
-    <FirebaseProvider>
+   
       <BrowserRouter basename='E-commerce-page'>
         <div className="mx-auto">
           <Header />
           <Routes >
             <Route path="/" element={<Home />} />
             
-            <Route path="/Login" element={<Login />} />
-            <Route path="/SignUp" element={<SignUp />} />
+            <Route path="/Login" element={<UserTypeSelectorLogin />} />
+            <Route path="/SignUp" element={<UserTypeSelector />} />
             <Route path="/Profile" element={<Profile />} />
             <Route path="/Products" element={<Products/>} >
             <Route path="/Products/AllProducts" element={<AllProducts/>} />
@@ -32,11 +45,13 @@ function App() {
             <Route path="/Products/Jewelery" element={<Jewelery />} />
             <Route path="/Products/Electronics" element={<Electronics />} />
             </Route>
+            <Route path="/cart" element={<Cart />} />
+            <Route path="/AddProducts" element={<AddProducts />} />
 
           </Routes>
         </div>
       </BrowserRouter>
-    </FirebaseProvider>
+
   );
 }
 

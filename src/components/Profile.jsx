@@ -1,17 +1,22 @@
 import React, { useEffect } from "react";
 import H_section0 from "./Home/H_section0";
 import { signOut } from "firebase/auth";
-import { firebaseAuth, useFirebase } from "./context/firebase";
+import { firebaseAuth } from "../context/firebase";
 import { Link, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { logOut } from "./store/feature/authSlice";
 const Profile = () => {
-  const { user } = useFirebase();
+  let user = useSelector((state) =>  {
+    return state.auth.user
+  });
 
+  const dispatch =useDispatch()
   const navigate = useNavigate();
   useEffect(() => {
     if (!user) {
       navigate("/Login");
     }
-  });
+  },[user]);
 
   return (
     <div>
@@ -25,7 +30,8 @@ const Profile = () => {
         <Link to={"/Login"}>
           {" "}
           <button
-            onClick={() => signOut(firebaseAuth)}
+            onClick={() => {signOut(firebaseAuth),dispatch(logOut()),localStorage.removeItem("user");
+            }}
             className="bg-gray-200 text-black p-[8px] rounded-[5px]"
           >
             sign out

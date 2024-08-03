@@ -6,6 +6,7 @@ import {
   signInWithEmailAndPassword,
   onAuthStateChanged,
 } from "firebase/auth";
+import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDt0dh0FRm5t3T0WZMMURin0-SFJsU8dGg",
@@ -23,34 +24,48 @@ export const firebaseAuth = getAuth(firebaseApp);
 const firebaseContext = createContext(null);
 
 export const useFirebase = () => useContext(firebaseContext);
+export const db = getFirestore(firebaseApp)
 
 export const FirebaseProvider = ({ children }) => {
-  const [user, setUser] = useState(null);
 
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(firebaseAuth, (user) => {
-      if (user) {
-        console.log("User is signed in:", user);
-        setUser(user);
-      } else {
-        console.log("User is signed out");
-        setUser(null);
+  // useEffect(() => {
+  //   const unsubscribe = onAuthStateChanged(firebaseAuth, (user) => {
+  //     if (user) {
+  //       console.log("User is signed in:", user);
+  //       setUser(user);
+  //     } else {
+  //       console.log("User is signed out");
+  //       setUser(null);
+  //     }
+  //   });
+
+  //   return () => unsubscribe();
+  // }, []);
+
+  const signupUserWithEmailAndPassword = async (email, password) => {
+    try {
+      const register = await createUserWithEmailAndPassword(firebaseAuth, email, password)
+      return register.user
+    } catch (error) {
+      if (error) {
+        // Error in register
+        if (error.message.includes("auth/email-already-in-use")) {
+
+          const login = await signInWithEmailAndPassword(firebaseAuth, email, password)
+          return login.user
+
+        }
+        throw error
       }
-    });
 
-    return () => unsubscribe();
-  }, []);
+    }
 
-  const signupUserWithEmailAndPassword = (email, password) => {
-    return createUserWithEmailAndPassword(firebaseAuth, email, password)
-      .then(() => console.log("Successfully signed up"))
-      .catch((err) => console.log("Error signing up:", err));
   };
 
-  const loginUserWithEmailAndPassword = (email, password) => {
+  const  loginUserWithEmailAndPassword =async (email, password) => {
     return signInWithEmailAndPassword(firebaseAuth, email, password)
-      .then(() => console.log("Successfully logged in"))
-      .catch((err) => console.log("Error logging in:", err));
+   
+      
   };
 
 
@@ -69,7 +84,7 @@ export const FirebaseProvider = ({ children }) => {
 
 
   return (
-    <firebaseContext.Provider value={{ user, signupUserWithEmailAndPassword, loginUserWithEmailAndPassword ,onAuthStateChanged ,scrollToSection}}>
+    <firebaseContext.Provider value={{ signupUserWithEmailAndPassword, loginUserWithEmailAndPassword, onAuthStateChanged, scrollToSection }}>
       {children}
     </firebaseContext.Provider>
   );
