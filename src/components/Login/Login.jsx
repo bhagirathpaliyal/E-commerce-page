@@ -1,12 +1,22 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { useFirebase } from "../context/firebase";
+import { useFirebase } from "../../context/firebase";
+import { useDispatch, useSelector } from "react-redux";
+import { logInUser } from "../store/feature/authSlice";
 
-function Login() {
-  const { user, loginUserWithEmailAndPassword } = useFirebase();
+function Login({isMerchant}) {
+  const {  loginUserWithEmailAndPassword } = useFirebase();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const userOrMerchant = isMerchant ? "Merchant" : "User"
   const navigate = useNavigate();
+const dispatch=useDispatch()
+  const {user, error} = useSelector((state) =>  {
+    return state.auth
+  });
+
+
 
   useEffect(() => {
     if (user) {
@@ -15,12 +25,14 @@ function Login() {
   }, [user]);
 
   return (
-    <div className="h-[100vh] w-[100vw] flex  items-center justify-center ">
+    <div className=" flex flex-col  items-center justify-center ">
+      
       <div
         action=""
-        className="flex flex-col gap-[10px] p-[20px] border border-blue-100 hover:border-blue-400   rounded-[10px] "
+        className="flex flex-col gap-[10px]  "
       >
-        <h2 className="flex justify-center font-medium">Login Form</h2>
+        <h2 className="flex justify-center font-medium">Login as {userOrMerchant}</h2>
+        {error && <label>{error}</label>}
         <label htmlFor="Email">Email</label>
         <input
           type="Email"
@@ -42,7 +54,8 @@ function Login() {
           value={password}
         />{" "}
         <button
-          onClick={() => loginUserWithEmailAndPassword(email, password)}
+          onClick={() =>{dispatch(logInUser({ isMerchant,email,password,loginUserWithEmailAndPassword }));
+        }}
           className=" border border-brown rounded-[5px] text-white bg-[#0055E9] w-[100%]"
         >
           Log In

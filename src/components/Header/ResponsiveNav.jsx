@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom/dist";
-import { useFirebase } from "../context/firebase";
+import { useFirebase } from "../../context/firebase";
 
 function ResponsiveNav() {
   const [isOpen, setIsOpen] = useState(false);
@@ -14,7 +14,6 @@ useEffect(() => {
 
   window.addEventListener("scroll", handleScroll);
 
-  // Cleanup the event listener on component unmount
   return () => {
     window.removeEventListener("scroll", handleScroll);
   };
