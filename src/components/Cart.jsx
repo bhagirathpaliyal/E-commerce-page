@@ -25,7 +25,7 @@ const Cart = () => {
   };
 
   return (
-    <div className='mt-[66px] flex flex-col gap-4'>
+    <div className='mt-[66px] flex flex-col gap-4 items-center text-[50px]'>
       {/* <h2>Your Cart</h2>
       {cartStatus === 'loading' && <p>Loading...</p>}
       <ul>
@@ -33,7 +33,7 @@ const Cart = () => {
           <li key={index}>{item.name} - {user.email}</li>
         ))}
       </ul> */}
-      <button onClick={() =>{ handleAddToCart({ name: 'Sample Item 123 dfkjh' })}}>
+      {/* <button onClick={() =>{ handleAddToCart({ name: 'Sample Item 123 dfkjh' })}}>
         Add Sample Item to Cart
       </button>
 
@@ -42,7 +42,10 @@ const Cart = () => {
         {cartItems.map((item, index) => (
           <li key={index}>{item.name} - {user.email}</li>
         ))}
-      </ul> }
+      </ul> } */}
+
+      <h4>Cart</h4>
+      <p className='text-[26px]'>Working on it...</p>
 
     </div>
   );
