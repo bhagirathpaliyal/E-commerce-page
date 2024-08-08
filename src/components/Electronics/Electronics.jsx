@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import Footer from "../Footer/Footer";
 import H_section0 from "../Home/H_section0";
-import Item from "../Men/Item";
+import Item from "../Item";
 
 function Electronics(){
 
@@ -24,7 +24,7 @@ function Electronics(){
       <div className="flex flex-wrap gap-[20px] justify-center">
         {product.length > 0 &&
           product.slice(0, 10).map((item, index) => (
-            <Item key={index} data={item} />
+            <Item key={index} index={index+20} data={item} />
           ))}
       </div>
 
