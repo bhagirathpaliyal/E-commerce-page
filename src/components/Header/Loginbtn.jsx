@@ -1,6 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import image from '/src/assets/shopping-cart.png'
 
 
 
@@ -22,7 +23,7 @@ const Loginbtn = () => {
           </Link>
           <div>
             {!user?.isMerchant ? <Link to={'/Cart'}>
-              <img src="./src/assets/shopping-cart.png" alt="" className="w-[26px]" />
+              <img src={image} alt="" className="w-[26px]" />
 
             </Link> : <Link to={'/AddProducts'}>Add Products</Link>}
 
