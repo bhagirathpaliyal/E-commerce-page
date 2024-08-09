@@ -16,7 +16,8 @@ export const fetchProduct = createAsyncThunk(
       const mainData = await item.data()
       const merchantData = await getDoc(mainData.merchantId)
       products.push({...mainData,
-        merchant: await merchantData.data()
+        merchant: await merchantData.data(),
+        productRef: item.ref.path
       })
     }  
     return products;
