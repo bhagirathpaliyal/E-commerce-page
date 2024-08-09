@@ -29,7 +29,7 @@ const dispatch =useDispatch()
       dispatch(fetchProduct(user.uid));
     }
   }, [user, dispatch]);
-
+console.log(product)
     return(
         <div className="bg-[#0055E9] flex flex-col gap-[50px] ">
             <H_section0/>
@@ -38,7 +38,7 @@ const dispatch =useDispatch()
       <div className="flex flex-wrap gap-[20px] justify-center">
         {product.length > 0 &&
           product.slice(0, 100).map((item, index) => (
-            <Item key={index} index={index+20} data={item} name={item.merchant.name}/>
+            <Item key={index} reference={item.productRef} index={index+20} data={item} name={item.merchant.name}/>
           ))}
       </div>
 
