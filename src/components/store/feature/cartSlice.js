@@ -1,36 +1,41 @@
 
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { db } from '../../../context/firebase';
-import { collection, setDoc, doc, getDoc, addDoc, updateDoc, arrayUnion } from "firebase/firestore";
-
+import { collection, setDoc, doc, getDoc, addDoc, updateDoc, arrayUnion, getDocs } from "firebase/firestore";
 
 
 export const fetchCartItems = createAsyncThunk(
   'cart/fetchCartItems',
   async (userId) => {
-    const cartRef = db.collection('merchants').doc(userId);
-    const doc = await cartRef.get();
-    return doc.exists() ? doc.data().products : [];
+    // const cartRef = db.collection('users').doc(userId);
+    const cartRef = doc(db,'users',userId);
+
+    const userObj = await getDoc(cartRef);
+    // const doc = await cartRef.get();
+   const cart=userObj.data().cart ;
+    const cartitem = [];
+    for (const item of cart) {
+      const productDoc = await getDoc(item)
+      const productData = productDoc.data()
+      cartitem.push(productData)
+    }  
+
+    return cartitem;
   }
 );
 
 export const addToCart = createAsyncThunk(
   'cart/addToCart',
-  async ({ userId, item }, { getState }) => {
-    const cartRef = doc(db, "merchants", userId);
+  async ({ userId ,productRef}, { getState }) => {
+    const cartRef = doc(db, "users", userId);
     const docc = await getDoc(cartRef);
-    if (docc.exists()) {
       await updateDoc(cartRef, {
-        products: arrayUnion(item),
+        cart: arrayUnion(doc(db, productRef)),
       });
-    } else {
-      await setDoc(cartRef, {
-        products: [item],
-      });
-    }
-    return item;
   }
 );
+
+
 
 const cartSlice = createSlice({
   name: 'cart',
@@ -43,6 +48,9 @@ const cartSlice = createSlice({
     builder
       .addCase(fetchCartItems.fulfilled, (state, action) => {
         state.items = action.payload;
+      })
+      .addCase(fetchCartItems.rejected, (state, action) => {
+        console.log(action)
       })
       .addCase(addToCart.fulfilled, (state, action) => {
         state.items.push(action.payload);
