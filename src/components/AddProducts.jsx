@@ -36,7 +36,7 @@ const AddProducts = () => {
 console.log(products)
 console.log(user)
   return (
-    <div className='mt-[66px] w-[100dvw] h-[100dvh] flex flex-col  justify-center items-center gap-2' >
+    <div className='mt-[166px]  flex flex-col  justify-center items-center gap-2' >
       <div className='border flex flex-col gap-2 p-4 rounded-[5px]'>
       <h2 className='text-center'>Add Your Product</h2>
       <label htmlFor="Product">Product Name</label>
