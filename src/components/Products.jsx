@@ -6,7 +6,7 @@ const Products = () => {
   return (
     <div >
         <H_section0/>
-        <Link to={'/'}><p className='ml-[10px] mt-[10px]'>- Back To Home </p></Link>
+       
         <div >
             <ul className='flex justify-center gap-[20px] my-[20px]'>
             <NavLink  to={'/Products/AllProducts'} style={({ isActive }) => {
