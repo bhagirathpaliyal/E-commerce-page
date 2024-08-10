@@ -14,18 +14,18 @@ const Loginbtn = () => {
   });
   console.log(user)
   return (
-    <div>
+    <div className="text-[14px]">
     
-        {user ? (<div className="flex gap-5">
+        {user ? (<div className="flex gap-5 items-center ">
           <Link to='Profile'>
 
-            <div className="bg-[#F1F1F1] pl-[10px] pr-[10px] rounded-[50%] text-black" >{user?.email[0]}</div>
+            <div className="bg-[#F1F1F1] px-[10px] py-[5px] rounded-[50%] text-black" >{user?.email[0]}</div>
           </Link>
           <div>
             {!user?.isMerchant ? <Link to={'/Cart'}>
               <img src={image} alt="" className="w-[26px]" />
 
-            </Link> : <Link to={'/AddProducts'}>Add Products</Link>}
+            </Link> : <Link to={'/AddProducts'}><div>Add Products</div></Link>}
 
           </div>
 
