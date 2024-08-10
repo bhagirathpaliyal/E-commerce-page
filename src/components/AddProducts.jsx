@@ -56,7 +56,8 @@ const AddProducts = () => {
     if (validateForm()) {
       
       if (user) {
-        dispatch(addProduct({ userId: user.uid, item: { name, price, image } }))
+        var imageUrl = isChecked ? `https://picsum.photos/id/${Math.floor(Math.random() * 1000) + 1}/200/300` : image
+        dispatch(addProduct({ userId: user.uid, item: { name, price, image:imageUrl } }))
           .then(() => dispatch(fetchProduct(user.uid)));
         setName('');
         setPrice('');
