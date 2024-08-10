@@ -4,48 +4,50 @@ import H_section0 from "./Home/H_section0";
 import Item from "./Item";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchProduct } from "./store/feature/productSlice";
+import Loader from "react-js-loader";
+import ItemSkeleton from "./ItemSkeleton";
 
-function AllProducts(){
-
-  // const [product, setProduct] = useState([]);
-
-  // useEffect(() => {
-  //   fetch("https://fakestoreapi.com/products")
-  //     .then((res) => res.json())
-  //     .then((data) => {
-        
-  //       setProduct(data);
-  //     });
-  // }, []);
-  const user = useSelector((state) =>  {
-    return state.auth.user
-  });
-
+function AllProducts() {
+  const [loading, setLoading] = useState(true); 
+const skeleton=[1,2,3,4,5,6,7,8,9,10,11,12]
+  const user = useSelector((state) => state.auth.user);
   const product = useSelector((state) => state.product.items);
-const dispatch =useDispatch()
+  const dispatch = useDispatch();
 
   useEffect(() => {
     if (user) {
-      dispatch(fetchProduct(user.uid));
+      dispatch(fetchProduct(user.uid))
+        .finally(() => setLoading(false)); 
     }
   }, [user, dispatch]);
-console.log(product)
-    return(
-        <div className="bg-[#0055E9] flex flex-col gap-[50px] ">
-            <H_section0/>
+
+  return (
+    <div className="bg-[#F1F1F1] flex flex-col pt-[50px]">
+      
+
+      {loading ? (
+       
+       <div className=' flex gap-[20px] flex-wrap mx-[50px] '>
+       {  skeleton.map(() => (
+         <ItemSkeleton/>
+       ))}
+          </div>
+      ) : (
+        <div className="flex flex-wrap gap-[20px] justify-center">
+          {product.length > 0 ? (
+            product.slice(0, 100).map((item, index) => (
+              <Item key={index} reference={item.productRef} index={index + 20} data={item} name={item.merchant.name} />
+            ))
+          ) : (
            
+            <div className="text-white">No products available</div>
+          )}
+        </div>
+      )}
 
-      <div className="flex flex-wrap gap-[20px] justify-center">
-        {product.length > 0 &&
-          product.slice(0, 100).map((item, index) => (
-            <Item key={index} reference={item.productRef} index={index+20} data={item} name={item.merchant.name}/>
-          ))}
-      </div>
-
-     <Footer/>
+      <Footer />
     </div>
-           
-    )
+  );
 }
 
 export default AllProducts;
