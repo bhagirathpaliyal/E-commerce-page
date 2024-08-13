@@ -34,8 +34,8 @@ function App() {
     <BrowserRouter basename='E-commerce-page'>
       <div className={`mx-auto ${darkMode ? 'dark' : ''}`}>
         <Header />
-        <button onClick={toggleDarkMode} className="fixed top-4 right-4 p-2 bg-gray-800 text-white rounded">
-          Toggle Dark Mode
+        <button onClick={toggleDarkMode} className="fixed top-[74px] right-2 p-2 bg-gray-800 text-white rounded ">
+          Dark Mode
         </button>
         <Routes>
           <Route path="/" element={<Home />} />
