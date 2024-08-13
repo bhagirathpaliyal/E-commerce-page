@@ -5,6 +5,7 @@ import { firebaseAuth } from "../context/firebase";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { logOut } from "./store/feature/authSlice";
+import { Button } from "@mui/material";
 const Profile = () => {
   let user = useSelector((state) =>  {
     return state.auth.user
@@ -29,13 +30,14 @@ const Profile = () => {
         <h1>{user?.email}</h1>
         <Link to={"/Login"}>
           {" "}
-          <button
+          <Button
             onClick={() => {signOut(firebaseAuth),dispatch(logOut()),localStorage.removeItem("user");
             }}
-            className="bg-gray-200 text-black p-[8px] rounded-[5px]"
+            color="inherit"
+            variant="outlined"
           >
             sign out
-          </button>
+          </Button>
         </Link>
       </div>
     </div>

@@ -7,6 +7,12 @@ export default {
   ],
   theme: {
     extend: {
+      colors: {
+        primary: '#74b9ff', // Custom primary color
+        secondary: '#FFC107', // Custom secondary color
+        accent: '#FF5722', // Custom accent color
+        neutral: '#9E9E9E', // Custom neutral color
+      },
       backgroundImage: {
         'hero-image': "url('./assets/hero.jpg')",
       },

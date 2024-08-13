@@ -28,8 +28,8 @@ const skeleton=[1,2,3,4,5,6,7,8,9,10,11,12]
       {loading ? (
        
        <div className=' flex gap-[20px] flex-wrap mx-[50px] '>
-       {  skeleton.map(() => (
-         <ItemSkeleton/>
+       {  skeleton.map((data,i) => (
+         <ItemSkeleton key={i}/>
        ))}
           </div>
       ) : (
@@ -40,7 +40,7 @@ const skeleton=[1,2,3,4,5,6,7,8,9,10,11,12]
             ))
           ) : (
            
-            <div className="text-white">No products available</div>
+            <div className="text-white">No products availableee</div>
           )}
         </div>
       )}
