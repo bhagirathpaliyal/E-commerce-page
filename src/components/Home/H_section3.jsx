@@ -2,7 +2,7 @@ import About from './../../assets/About.jpg'
 
 function H_section3() {
   return (
-    <div id='section3' className="bg-[#F1F1F1] flex flex-col items-center gap-[50px] text-black p-[50px] ">
+    <div id='section3' className="bg-secondary flex flex-col items-center gap-[50px] text-black p-[50px] ">
       <div className="text-[30px] md:text-[40px] ">About Us</div>
       <div className='w-[100%] flex justify-around gap-[20px]  flex-wrap'>
          <div className='min-h-[300px] max-w-[500px] rounded-[10px] overflow-hidden'>

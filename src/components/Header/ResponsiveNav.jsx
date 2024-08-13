@@ -27,7 +27,7 @@ useEffect(() => {
       </button>
 
       <div
-        className={`duration-300 fixed top-[64px] w-[50%] h-[100%] bg-[#0055E9] opacity-80 
+        className={`duration-300 fixed top-[64px] w-[50%] h-[100%] bg-primary opacity-80 
          ${isOpen ? "left-[0px]" : "left-[-100%]"}`}
       >
         <ul

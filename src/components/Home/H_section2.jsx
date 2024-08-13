@@ -20,7 +20,7 @@ function H_section2() {
   }, []);
 
   return (
-    <div id="section2" className="bg-[#0055E9] flex flex-col gap-[50px] items-center justify-center text-white p-[50px]">
+    <div id="section2" className="bg-primary flex flex-col gap-[50px] items-center justify-center text-white p-[50px]">
       <div className="text-[30px] md:text-[40px] ">Our collection</div>
       <div className="flex w-[100%] justify-evenly flex-wrap">
 

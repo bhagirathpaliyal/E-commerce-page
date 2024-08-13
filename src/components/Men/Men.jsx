@@ -19,7 +19,7 @@ function Men(){
   }, []);
 
     return(
-        <div className="bg-[#F1F1F1] flex flex-col gap-[50px]">
+        <div className="bg-secondary flex flex-col gap-[50px]">
            
         
       <H_section0 />

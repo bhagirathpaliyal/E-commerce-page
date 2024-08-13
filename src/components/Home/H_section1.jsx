@@ -24,7 +24,7 @@ function H_section1() {
 
 
         <div className="flex flex-col items-center ">
-        <div className="border-b-[2px] border-solid border-[#0055E9] mt-[40px] rounded-[7px] ">
+        <div className="border-b-[2px] border-solid border-primary mt-[40px] rounded-[7px] ">
           <Link to="/AllProducts">
             <h1 className="text-[30px] md:text-[40px] text-black animate-bounce ">
               Shop Now!

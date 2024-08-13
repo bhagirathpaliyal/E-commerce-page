@@ -18,7 +18,7 @@ function Electronics(){
   }, []);
 
     return(
-        <div className="bg-[#0055E9] flex flex-col gap-[50px] ">
+        <div className="bg-primary flex flex-col gap-[50px] ">
       <H_section0 />
 
       <div className="flex flex-wrap gap-[20px] justify-center">

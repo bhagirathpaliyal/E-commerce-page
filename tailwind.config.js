@@ -8,10 +8,10 @@ export default {
   theme: {
     extend: {
       colors: {
-        primary: '#74b9ff', // Custom primary color
-        secondary: '#FFC107', // Custom secondary color
-        accent: '#FF5722', // Custom accent color
-        neutral: '#9E9E9E', // Custom neutral color
+        primary: '#74b9ff', 
+        secondary: '#dfe6e9',
+        accent: '#FF5722',
+        neutral: '#9E9E9E', 
       },
       backgroundImage: {
         'hero-image': "url('./assets/hero.jpg')",

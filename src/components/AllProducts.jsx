@@ -22,7 +22,7 @@ const skeleton=[1,2,3,4,5,6,7,8,9,10,11,12]
   }, [user, dispatch]);
 
   return (
-    <div className="bg-[#F1F1F1] flex flex-col pt-[50px]">
+    <div className="bg-secondary flex flex-col pt-[50px]">
       
 
       {loading ? (
@@ -40,7 +40,7 @@ const skeleton=[1,2,3,4,5,6,7,8,9,10,11,12]
             ))
           ) : (
            
-            <div className="text-white">No products availableee</div>
+            <div className="text-white">No products available</div>
           )}
         </div>
       )}
