@@ -4,7 +4,7 @@ function Footer() {
   const today = new Date();
   return (
     <footer>
-      <div id="section5" className="flex justify-around text-center flex-wrap gap-[20px] bg-[#dfdddd] items-center  p-[50px] font-medium pt-[100px]">
+      <div id="section5" className="flex justify-around text-center flex-wrap gap-[20px] bg-[#dfdddd] dark:bg-gray-800 items-center  p-[50px] font-medium pt-[100px]">
         <div className="flex flex-col">
           <h2>Let's Connect</h2>
           <Link to={"#"}>
@@ -36,7 +36,7 @@ function Footer() {
           </h2>
         </div>
       </div>
-      <div className="flex flex-col items-center justify-center h-[50px] bg-[#aaa9a9] font-medium">
+      <div className="flex flex-col items-center justify-center h-[50px] bg-[#aaa9a9] dark:bg-gray-700 font-medium">
         <h2>Made with heart by BP</h2>
         <h2>Copyright &copy; {today.getFullYear()} </h2>
       </div>
