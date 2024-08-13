@@ -56,13 +56,13 @@ const dispatch=useDispatch()
         <button
           onClick={() =>{dispatch(logInUser({ isMerchant,email,password,loginUserWithEmailAndPassword }));
         }}
-          className=" border border-brown rounded-[5px] text-white bg-[#0055E9] w-[100%]"
+          className=" border border-brown rounded-[5px] text-white bg-primary w-[100%]"
         >
           Log In
         </button>
         <div className=" flex flex-col items-center">
           <p>Don't have an Account ..?</p>
-          <Link to="/SignUp" className="text-[#0055E9] font-medium">
+          <Link to="/SignUp" className="text-primary font-medium">
             Sign Up
           </Link>
         </div>

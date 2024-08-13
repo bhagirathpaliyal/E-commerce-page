@@ -79,14 +79,14 @@ const SignUp = ({isMerchant}) => {
           onClick={() => {
             dispatch(addUser({ isMerchant, name, email, password, signupUserWithEmailAndPassword }));
           }}
-          className="bg-[#0055E9] w-[100%] rounded-[5px] text-white"
+          className="bg-primary w-[100%] rounded-[5px] text-white"
         >
           SignUp
         </button>
 
         <div className="text-center ">
           <p>Already have Account</p>
-          <Link to="/Login" className="text-[#0055E9] font-medium">
+          <Link to="/Login" className="text-primary font-medium">
             Login
           </Link>
         </div>

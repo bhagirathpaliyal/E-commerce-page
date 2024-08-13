@@ -19,7 +19,7 @@ const Loginbtn = () => {
         {user ? (<div className="flex gap-5 items-center ">
           <Link to='Profile'>
 
-            <div className="bg-[#F1F1F1] px-[10px] py-[5px] rounded-[50%] text-black" >{user?.email[0]}</div>
+            <div className="bg-secondary px-[10px] py-[5px] rounded-[50%] text-black" >{user?.email[0]}</div>
           </Link>
           <div>
             {!user?.isMerchant ? <Link to={'/Cart'}>

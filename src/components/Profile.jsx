@@ -23,7 +23,7 @@ const Profile = () => {
     <div>
       <H_section0 />
       <div className="h-[100vh]   flex flex-col items-center justify-center gap-[20px]">
-        <div className="bg-[#F1F1F1] w-[50px] h-[50px]  rounded-[50%] text-black flex justify-center items-center">
+        <div className="bg-secondary w-[50px] h-[50px]  rounded-[50%] text-black flex justify-center items-center">
           {user?.email[0]}
         </div>
 

@@ -4,7 +4,7 @@
 function H_section5(){
 
     return(
-        <div className="bg-[#F1F1F1] flex flex-col items-center gap-[50px] text-black p-[50px] " >
+        <div className="bg-secondary flex flex-col items-center gap-[50px] text-black p-[50px] " >
     <div className="text-[30px] md:text-[40px] text-center">Frequently Asked Questions</div>
         <div className="flex flex-col text-center gap-[30px] text-[14px] md:text-[18px]">
             <div className="">
