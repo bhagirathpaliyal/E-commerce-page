@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "./store/feature/cartSlice";
 import { LazyLoadImage } from "react-lazy-load-image-component";
+import { Button } from "@mui/material";
 
 function Item(prop){
     const user = useSelector((state) =>  {
@@ -20,7 +21,7 @@ console.log(window.location.href.includes('Cart'))
                 <p className="text-[12px] md:text-[15px] font-medium">{prop?.name}</p>
             <h2 className='text-[12px] md:text-[15px]font-bold  '>Price : {prop.data?.price }</h2>
            
-          { !user?.isMerchant && !prop.isCart ?<button onClick={()=>{dispatch(addToCart({userId: user.uid,productRef: prop.reference}))}} className="bg-[#0055E9] text-white rounded-[5px] ">Add To Cart</button>:''}
+          { !user?.isMerchant && !prop.isCart ?<Button onClick={()=>{dispatch(addToCart({userId: user.uid,productRef: prop.reference}))}} >Add To Cart</Button>:''}
 
           
             </div>

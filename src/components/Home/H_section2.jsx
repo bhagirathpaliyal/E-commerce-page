@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import man from "./../../assets/man.jpg";
 import women from "./../../assets/women.jpg";
 import { useEffect, useState } from "react";
+import { Button } from "@mui/material";
 
 
 function H_section2() {
@@ -48,7 +49,8 @@ function H_section2() {
 
  </div>
 
-<Link to={'/Products/AllProducts'}><h3>See All Products</h3></Link>
+<Link to={'/Products/AllProducts'}><Button  
+color="inherit" >See All Products</Button></Link>
 
 
     </div>
