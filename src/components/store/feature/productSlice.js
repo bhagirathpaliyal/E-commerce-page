@@ -7,7 +7,7 @@ import { collection, setDoc, doc, getDoc, addDoc, updateDoc, arrayUnion, getDocs
 
 export const fetchProduct = createAsyncThunk(
   'product/fetchProduct',
-  async (userId) => {
+  async () => {
     const productRef = collection(db,'products');
 
     const docs = await getDocs(productRef);
@@ -17,7 +17,7 @@ export const fetchProduct = createAsyncThunk(
       const merchantData = await getDoc(mainData.merchantId)
       products.push({...mainData,
         merchant: await merchantData.data(),
-        productRef: item.ref.path
+        productRef: item.ref
       })
     }  
     return products;

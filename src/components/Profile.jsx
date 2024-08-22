@@ -28,6 +28,18 @@ const Profile = () => {
         </div>
 
         <h1>{user?.email}</h1>
+
+        <Link to={"/Order"}>
+          {" "}
+          <Button
+         
+            color="inherit"
+            variant="outlined"
+          >
+            Your Order
+          </Button>
+        </Link>
+
         <Link to={"/Login"}>
           {" "}
           <Button
@@ -39,6 +51,8 @@ const Profile = () => {
             sign out
           </Button>
         </Link>
+
+    
       </div>
     </div>
   );

@@ -13,15 +13,15 @@ const theme = createTheme({
       styleOverrides: {
         root: {
           borderRadius: '8px', // Change border radius
-          padding: '10px ', // Change padding
-          fontSize: '16px', // Change font size
+          padding: '5px ', // Change padding
+          fontSize: '13px', // Change font size
           textTransform: 'none', // Prevent uppercase text
         },
         contained: {
           boxShadow: 'none', // Remove box shadow for contained buttons
         },
         outlined: {
-          borderColor: '#0055E9', // Change border color for outlined buttons
+          borderColor: '#74b9ff', // Change border color for outlined buttons
         },
       },
     },

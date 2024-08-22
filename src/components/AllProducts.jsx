@@ -16,11 +16,12 @@ const skeleton=[1,2,3,4,5,6,7,8,9,10,11,12]
 
   useEffect(() => {
     if (user) {
+     
       dispatch(fetchProduct(user.uid))
         .finally(() => setLoading(false)); 
     }
   }, [user, dispatch]);
-
+console.log(product)
   return (
     <div className="bg-secondary flex flex-col pt-[50px]">
       
@@ -36,7 +37,7 @@ const skeleton=[1,2,3,4,5,6,7,8,9,10,11,12]
         <div className="flex flex-wrap gap-[20px] justify-center">
           {product.length > 0 ? (
             product.slice(0, 100).map((item, index) => (
-              <Item key={index} reference={item.productRef} index={index + 20} data={item} name={item.merchant.name} />
+              <Item key={index} reference={item.productRef} index={index + 20} data={item} name={item.merchant?.name} />
             ))
           ) : (
            

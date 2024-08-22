@@ -7,17 +7,19 @@ import { collection, setDoc, doc, getDoc, addDoc, updateDoc, arrayUnion, getDocs
 export const fetchCartItems = createAsyncThunk(
   'cart/fetchCartItems',
   async (userId) => {
-    // const cartRef = db.collection('users').doc(userId);
+
     const cartRef = doc(db,'users',userId);
 
     const userObj = await getDoc(cartRef);
-    // const doc = await cartRef.get();
    const cart=userObj.data().cart ;
     const cartitem = [];
     for (const item of cart) {
       const productDoc = await getDoc(item)
-      const productData = productDoc.data()
-      cartitem.push(productData)
+      const productData = await productDoc.data()
+      cartitem.push({
+        ...productData,
+        productRef: productDoc.ref
+      })
     }  
 
     return cartitem;
@@ -28,9 +30,9 @@ export const addToCart = createAsyncThunk(
   'cart/addToCart',
   async ({ userId ,productRef}, { getState }) => {
     const cartRef = doc(db, "users", userId);
-    const docc = await getDoc(cartRef);
+  
       await updateDoc(cartRef, {
-        cart: arrayUnion(doc(db, productRef)),
+        cart: arrayUnion(productRef),
       });
   }
 );
