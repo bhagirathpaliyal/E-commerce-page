@@ -17,6 +17,7 @@ import { setUser } from "./components/store/feature/authSlice";
 import { UserTypeSelector } from './components/UserTypeSelecctor';
 import { UserTypeSelectorLogin } from './components/UserTypeSelecctorLogin';
 import AddProducts from './components/AddProducts';
+import Order from './components/Order/Order';
 
 
 function App() {
@@ -46,8 +47,9 @@ useEffect(()=>{
             <Route path="/Products/Electronics" element={<Electronics />} />
             </Route>
             <Route path="/cart" element={<Cart />} />
-            <Route path="/AddProducts" element={<AddProducts />} />
 
+            <Route path="/AddProducts" element={<AddProducts />} />
+            <Route path="/Order" element={<Order />} />
           </Routes>
         </div>
       </BrowserRouter>
