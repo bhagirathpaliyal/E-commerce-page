@@ -25,7 +25,7 @@ console.log(orderItems)
       <h2>Your order</h2>
       
       {loading ? (
-       <div className=' flex gap-[20px] flex-wrap mx-[50px]'>
+       <div className=' flex flex-col gap-[20px]  mx-[50px]'>
     {  skeleton.map((data,index) => (
       <ItemSkeleton key={index}/>
     ))}
@@ -33,7 +33,7 @@ console.log(orderItems)
       ) : (
         <>
   
-          <div className='flex flex-wrap gap-[20px] justify-center '>
+          <div className='flex flex-col gap-[20px] justify-center '>
             {orderItems.length > 0 ? (
               orderItems.map((item, index) => (
                 item.user.email === user.email && ( <OrderCard key={index}  data={item
