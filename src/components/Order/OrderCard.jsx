@@ -1,15 +1,37 @@
-import React from 'react'
+import React from 'react';
+import { Card, CardContent, Typography } from '@mui/material';
+import { styled } from '@mui/material/styles';
 
-const OrderCard = (prop) => {
+const StyledCard = styled(Card)(({ theme }) => ({
+  borderRadius: '10px',
+  padding: theme.spacing(2),
+  boxShadow: theme.shadows[3],
+}));
+
+const OrderCard = ({ data }) => {
   return (
-    <div className='border p-5 rounded-[10px]'>
-        <h4>OrderId : <span>{prop.data.orderId}</span></h4> 
-        <p>Product Name : <span>{prop.data.orderedProducts.name}</span></p>
-        <p>Product Price : <span>{prop.data.orderedProducts.Price}</span></p>
-        <p>Merchant Name : <span>{prop.data.merchant?.name}</span></p>
+    <StyledCard className="border p-5 rounded-[10px] flex  items-center">
+      <img
+        src={data.orderedProducts.image}
+        alt="Product"
+        className="h-[300px] w-auto mb-4"
+      />
+      <CardContent>
+        <Typography variant="h6" gutterBottom>
+          OrderId: <span className="font-bold">{data.orderId}</span>
+        </Typography>
+        <Typography variant="body1">
+          Product Name: <span className="font-bold">{data.orderedProducts.name}</span>
+        </Typography>
+        <Typography variant="body1">
+          Product Price: <span className="font-bold">${data.orderedProducts.Price}</span>
+        </Typography>
+        <Typography variant="body1">
+          Merchant Name: <span className="font-bold">{data.merchant?.name}</span>
+        </Typography>
+      </CardContent>
+    </StyledCard>
+  );
+};
 
-    </div>
-  )
-}
-
-export default OrderCard
+export default OrderCard;
