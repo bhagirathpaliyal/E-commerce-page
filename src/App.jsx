@@ -18,6 +18,7 @@ import { UserTypeSelector } from './components/UserTypeSelecctor';
 import { UserTypeSelectorLogin } from './components/UserTypeSelecctorLogin';
 import AddProducts from './components/AddProducts';
 import Order from './components/Order/Order';
+import OrderDetails from './components/Order/OrderDetails';
 
 
 function App() {
@@ -50,6 +51,7 @@ useEffect(()=>{
 
             <Route path="/AddProducts" element={<AddProducts />} />
             <Route path="/Order" element={<Order />} />
+            <Route path="/OrderDetails" element={<OrderDetails />} />
           </Routes>
         </div>
       </BrowserRouter>

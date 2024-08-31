@@ -21,7 +21,8 @@ export const fetchOrder = createAsyncThunk(
       orders.push({orderedProducts: await orderProduct.data(),
         merchant: await merchantData.data(),
         user: await userData.data(),
-        orderId: item.ref.id
+        orderId: item.ref.id,
+        orderStatus:'Ordered'
      
       })
     }  

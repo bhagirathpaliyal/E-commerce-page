@@ -19,6 +19,8 @@ const skeleton=[1,2,3,4,5,6,7,8,9,10,11,12];
         .finally(() => setLoading(false)); 
     }
   }, [user, dispatch]);
+
+  
 console.log(orderItems)
   return (
     <div className='mt-[66px] flex flex-col gap-4 items-center'>
