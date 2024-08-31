@@ -7,7 +7,7 @@ import { collection, setDoc, doc, getDoc, addDoc, updateDoc, arrayUnion, getDocs
 
 export const fetchOrder = createAsyncThunk(
   'order/fetchOrder',
-  async () => {
+  async (status) => {
     const orderRef = collection(db,'orders');
 
     const docs = await getDocs(orderRef);
@@ -22,7 +22,7 @@ export const fetchOrder = createAsyncThunk(
         merchant: await merchantData.data(),
         user: await userData.data(),
         orderId: item.ref.id,
-        orderStatus:'Ordered'
+        orderStatus: status 
      
       })
     }  

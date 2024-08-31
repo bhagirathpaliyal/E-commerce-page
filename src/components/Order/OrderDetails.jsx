@@ -1,19 +1,20 @@
 import React from 'react';
-import { Dialog, DialogTitle, DialogContent, DialogActions, Button, Typography } from '@mui/material';
+import { Dialog, DialogTitle, DialogContent, DialogActions, Button, Typography, Stepper, Step, StepLabel } from '@mui/material';
 import { CheckCircle, LocalShipping, Cancel } from '@mui/icons-material';
 
-const OrderDetails = ({ open, onClose, order,orderStatus }) => {
-  // Status icons
-  const getStatusIcon = (status) => {
+const OrderDetails = ({ open, onClose, order, orderStatus }) => {
+  const steps = ['Ordered', 'Shipped', 'Delivered'];
+
+  const getActiveStep = (status) => {
     switch (status) {
       case 'Ordered':
-        return <CheckCircle color="primary" />;
+        return 0;
       case 'Shipped':
-        return <LocalShipping color="action" />;
+        return 1;
       case 'Delivered':
-        return <CheckCircle color="success" />;
+        return 2;
       default:
-        return <Cancel color="error" />;
+        return -1; 
     }
   };
 
@@ -28,14 +29,24 @@ const OrderDetails = ({ open, onClose, order,orderStatus }) => {
           <Typography variant="body1">
             Status: <span className="font-bold">{orderStatus}</span>
           </Typography>
-          <div className="flex items-center space-x-2">
-            {['Ordered', 'Shipped', 'Delivered'].map((stage) => (
-              <div key={stage} className="flex items-center space-x-1">
-                {getStatusIcon(stage)}
-                <Typography variant="body2">{stage}</Typography>
-              </div>
+          <Stepper activeStep={getActiveStep(orderStatus)} alternativeLabel>
+            {steps.map((label) => (
+              <Step key={label}>
+                <StepLabel>
+                  <div className="flex items-center space-x-4">
+                    {label === 'Delivered' ? (
+                      <CheckCircle color="success" />
+                    ) : label === 'Shipped' ? (
+                      <LocalShipping color="action" />
+                    ) : (
+                      <CheckCircle color="primary" />
+                    )}
+                    <Typography variant="body2">{label}</Typography>
+                  </div>
+                </StepLabel>
+              </Step>
             ))}
-          </div>
+          </Stepper>
         </div>
       </DialogContent>
       <DialogActions>
