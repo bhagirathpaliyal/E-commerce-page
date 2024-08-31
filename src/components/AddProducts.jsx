@@ -134,7 +134,7 @@ const AddProducts = () => {
         <div className='text-lg font-bold'>Your Products</div>
         <ul className='flex flex-wrap gap-[20px] justify-center'>
           {products.map((item, index) =>
-            item.merchant.email === user.email ? (
+            item.merchant?.email === user.email ? (
               <Item key={index} index={index + 20} data={item} name={item.merchant.name} />
             ) : null
           )}

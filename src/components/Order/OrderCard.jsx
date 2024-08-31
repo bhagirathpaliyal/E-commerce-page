@@ -1,22 +1,26 @@
-import React from 'react';
-import { Card, CardContent, Typography } from '@mui/material';
-import { styled } from '@mui/material/styles';
+import React, { useState } from 'react';
+import { Card, CardContent, Typography, Button } from '@mui/material';
+import { Link } from 'react-router-dom';
+import OrderDetails from './OrderDetails';
 
-const StyledCard = styled(Card)(({ theme }) => ({
-  borderRadius: '10px',
-  padding: theme.spacing(2),
-  boxShadow: theme.shadows[3],
-}));
 
 const OrderCard = ({ data }) => {
+  const handleDetailsClick = () => {
+    // Handle button click here
+    console.log('Order Details clicked');
+  };
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
+
+ 
+
   return (
-    <StyledCard className="border p-5 rounded-[10px] flex  items-center">
+    <Card className="flex flex-col sm:flex-row items-center p-5 rounded-lg shadow-lg">
       <img
         src={data.orderedProducts.image}
         alt="Product"
-        className="h-[300px] w-auto mb-4"
+        className="h-auto w-[250px] sm:w-[200px] mb-4 sm:mb-0 sm:mr-4 rounded-lg object-cover"
       />
-      <CardContent>
+      <CardContent className="flex flex-col">
         <Typography variant="h6" gutterBottom>
           OrderId: <span className="font-bold">{data.orderId}</span>
         </Typography>
@@ -29,8 +33,20 @@ const OrderCard = ({ data }) => {
         <Typography variant="body1">
           Merchant Name: <span className="font-bold">{data.merchant?.name}</span>
         </Typography>
+      
+       
+      <Button variant="contained" color="primary" className="p-4" onClick={() => setIsPopupOpen(true)}>
+        Show Order Details
+      </Button>
+      <OrderDetails
+        open={isPopupOpen}
+        onClose={() => setIsPopupOpen(false)}
+        order={data.orderId}
+        orderStatus={data.orderStatus}
+      />
+  
       </CardContent>
-    </StyledCard>
+    </Card>
   );
 };
 
