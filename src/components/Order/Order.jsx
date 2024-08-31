@@ -1,21 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchOrder } from '../store/feature/orderSlice';
-import Item from '../Item';
 import ItemSkeleton from '../ItemSkeleton';
 import OrderCard from './OrderCard';
 
 
 const Order = () => {
   const [loading, setLoading] = useState(true); 
-  
+  const [status, setStatus] = useState('Ordered')
   const user = useSelector((state) => state.auth.user);
   const dispatch = useDispatch();
   const orderItems = useSelector((state) => state.order.items);
 const skeleton=[1,2,3,4,5,6,7,8,9,10,11,12];
   useEffect(() => {
     if (user) {
-      dispatch(fetchOrder())
+      dispatch(fetchOrder(status))
         .finally(() => setLoading(false)); 
     }
   }, [user, dispatch]);

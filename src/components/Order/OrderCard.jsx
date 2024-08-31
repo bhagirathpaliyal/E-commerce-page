@@ -5,10 +5,7 @@ import OrderDetails from './OrderDetails';
 
 
 const OrderCard = ({ data }) => {
-  const handleDetailsClick = () => {
-    // Handle button click here
-    console.log('Order Details clicked');
-  };
+ 
   const [isPopupOpen, setIsPopupOpen] = useState(false);
 
  
