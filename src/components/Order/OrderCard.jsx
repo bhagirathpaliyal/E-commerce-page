@@ -39,7 +39,7 @@ const OrderCard = ({ data }) => {
         open={isPopupOpen}
         onClose={() => setIsPopupOpen(false)}
         order={data.orderId}
-        orderStatus={data.orderStatus}
+        orderStatus={data.status}
       />
   
       </CardContent>

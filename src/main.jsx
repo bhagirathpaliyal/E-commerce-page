@@ -12,7 +12,7 @@ const theme = createTheme({
     MuiButton: {
       styleOverrides: {
         root: {
-          borderRadius: '8px', // Change border radius
+          borderRadius: '8px', // Change border radiu
           padding: '5px ', // Change padding
           fontSize: '13px', // Change font size
           textTransform: 'none', // Prevent uppercase text

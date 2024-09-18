@@ -7,7 +7,7 @@ import { collection, setDoc, doc, getDoc, addDoc, updateDoc, arrayUnion, getDocs
 
 export const fetchOrder = createAsyncThunk(
   'order/fetchOrder',
-  async (status) => {
+  async () => {
     const orderRef = collection(db,'orders');
 
     const docs = await getDocs(orderRef);
@@ -17,12 +17,13 @@ export const fetchOrder = createAsyncThunk(
       const merchantData = await getDoc(mainData.merchantId)
       const userData = await getDoc(mainData.userId)
       const orderProduct = await getDoc(mainData.productRef)
+     
 
       orders.push({orderedProducts: await orderProduct.data(),
         merchant: await merchantData.data(),
         user: await userData.data(),
         orderId: item.ref.id,
-        orderStatus: status 
+         status:mainData.status
      
       })
     }  
@@ -30,16 +31,31 @@ export const fetchOrder = createAsyncThunk(
   }
 );
 
+
 export const createOrder = createAsyncThunk(
   'order/createOrder',
-  async ({ userId,merchantId , productRef }, { getState }) => {
+  async ({ userId,merchantId , productRef ,status}, { getState }) => {
     const ordersCollection = collection(db, "orders");
       await addDoc(ordersCollection, {
         userId:doc(db, "users", userId) ,
         merchantId,
-        productRef
-        
+        productRef,
+        status
       });
+  }
+);
+
+
+
+
+export const ChangeOrderStatus = createAsyncThunk(
+  'order/ChangeOrderStatus',
+  async ({  OrderId ,status}, { getState }) => {
+    const ordersCollection = doc(db,'orders',OrderId);
+ 
+    await updateDoc(ordersCollection, {
+      status: status,
+    });
   }
 );
 
@@ -56,19 +72,28 @@ const orderSlice = createSlice({
         state.items = action.payload;
       })
       .addCase(fetchOrder.pending, (state, action) => {
-       // state.items = action.payload;
+        console.log(action)
       })
       .addCase(fetchOrder.rejected, (state, action) => {
-        //state.items = action.payload;
+        
         console.log(action)
       })
       .addCase(createOrder.fulfilled, (state, action) => {
-        // state.items.push(action.payload);
+     
       })
-    //   .addCase(createOrder.pending, (state, action) => {
-    //     console.log(action)
-    //   })
+      .addCase(createOrder.pending, (state, action) => {
+        console.log(action)
+      })
       .addCase(createOrder.rejected, (state, action) => {
+        console.log(action)
+      })
+      .addCase(ChangeOrderStatus.fulfilled, (state, action) => {
+        state.items.push(action.payload);
+      })
+      .addCase(ChangeOrderStatus.pending, (state, action) => {
+        console.log(action)
+      })
+      .addCase(ChangeOrderStatus.rejected, (state, action) => {
         console.log(action)
       });
   },
