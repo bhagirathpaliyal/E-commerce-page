@@ -6,6 +6,9 @@ import { Button } from "@mui/material";
 import { createOrder } from "./store/feature/orderSlice";
 
 function Item(prop) {
+
+  const [status, setStatus] = useState('Ordered')
+
   const user = useSelector((state) => {
     return state.auth.user;
   });
@@ -58,7 +61,7 @@ function Item(prop) {
             onClick={() => {
                console.log(prop.data.ref)
               dispatch(
-                createOrder({ userId: user.uid , merchantId: prop.data.merchantId , productRef:prop.data.productRef})
+                createOrder({ userId: user.uid , merchantId: prop.data.merchantId , productRef:prop.data.productRef,status})
               );
             }}
           >
