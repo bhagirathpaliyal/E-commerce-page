@@ -6,8 +6,7 @@ import { Button } from "@mui/material";
 import { createOrder } from "./../store/feature/orderSlice";
 
 function Item(prop) {
-
-  const [status, setStatus] = useState('Ordered')
+  const [status, setStatus] = useState("Ordered");
 
   const user = useSelector((state) => {
     return state.auth.user;
@@ -17,9 +16,7 @@ function Item(prop) {
   const dispatch = useDispatch();
 
   return (
-    <div
-      className="flex flex-col gap-[10px] border-[2px] border-solid border-brown-900  w-[200px] bg-secondary rounded-[6px] overflow-hidden p-[10px] relative"
-    >
+    <div className="flex flex-col gap-[10px] border-[2px] border-solid border-brown-900  w-[200px] bg-secondary rounded-[6px] overflow-hidden p-[10px] relative">
       <div>
         <LazyLoadImage
           src={
@@ -42,7 +39,7 @@ function Item(prop) {
 
         {!user?.isMerchant && !prop.isCart ? (
           <Button
-          variant="contained"
+            variant="contained"
             onClick={() => {
               dispatch(
                 addToCart({ userId: user.uid, productRef: prop.reference })
@@ -59,9 +56,14 @@ function Item(prop) {
           <Button
             variant="contained"
             onClick={() => {
-               console.log(prop.data.ref)
+              console.log(prop.data.ref);
               dispatch(
-                createOrder({ userId: user.uid , merchantId: prop.data.merchantId , productRef:prop.data.productRef,status})
+                createOrder({
+                  userId: user.uid,
+                  merchantId: prop.data.merchantId,
+                  productRef: prop.data.productRef,
+                  status,
+                })
               );
             }}
           >

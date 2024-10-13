@@ -1,4 +1,4 @@
-import { Box, Tab } from "@mui/material";
+import {  Tab } from "@mui/material";
 import { useState } from "react";
 import SignUp from "./SignUp/SignUp";
 import TabContext from '@mui/lab/TabContext';

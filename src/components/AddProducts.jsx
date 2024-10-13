@@ -9,8 +9,8 @@ const AddProducts = () => {
   const products = useSelector((state) => state.product.items);
   const dispatch = useDispatch();
 
-  const unique_id = uuid();
-  const small_id = unique_id.slice(0, 4)
+
+ 
  
 
   const [name, setName] = useState('');
