@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import Footer from "../Footer/Footer";
-import H_section0 from "../Home/H_section0";
+import Footer from "../../components/Footer/Footer";
+import H_section0 from "../../components/Home/H_section0";
 
-import Item from "../Item";
+import Item from "../../components/Item";
 
 function Jewelery() {
 
