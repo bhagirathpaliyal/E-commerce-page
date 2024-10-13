@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useFirebase } from "../../context/firebase";
-import { addUser } from "../store/feature/authSlice";
+import { addUser } from "../../store/feature/authSlice";
 import { useSelector, useDispatch } from 'react-redux';
 
 

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Dialog, DialogTitle, DialogContent, DialogActions, Button, Typography, Stepper, Step, StepLabel } from '@mui/material';
 import { CheckCircle, LocalShipping, Cancel } from '@mui/icons-material';
 import { useDispatch } from 'react-redux';
-import { ChangeOrderStatus } from '../store/feature/orderSlice';
+import { ChangeOrderStatus } from '../../store/feature/orderSlice';
 
 const OrderDetails = ({ open, onClose, order, orderStatus }) => {
   const steps = ['Ordered', 'Shipped', 'Delivered'];

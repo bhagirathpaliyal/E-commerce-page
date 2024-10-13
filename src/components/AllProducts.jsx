@@ -3,7 +3,7 @@ import Footer from "./Footer/Footer";
 import H_section0 from "./Home/H_section0";
 import Item from "./Item";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchProduct } from "./store/feature/productSlice";
+import { fetchProduct } from "../store/feature/productSlice";
 import Loader from "react-js-loader";
 import ItemSkeleton from "./ItemSkeleton";
 

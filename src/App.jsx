@@ -13,7 +13,7 @@ import AllProducts from './components/AllProducts';
 import Products from './components/Products';
 import Cart from './components/Cart';
 import { useDispatch } from 'react-redux';
-import { setUser } from "./components/store/feature/authSlice";
+import { setUser } from "./store/feature/authSlice";
 import { UserTypeSelector } from './components/UserTypeSelecctor';
 import { UserTypeSelectorLogin } from './components/UserTypeSelecctorLogin';
 import AddProducts from './components/AddProducts';

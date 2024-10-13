@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addToCart } from "./store/feature/cartSlice";
+import { addToCart } from "./../store/feature/cartSlice";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import { Button } from "@mui/material";
-import { createOrder } from "./store/feature/orderSlice";
+import { createOrder } from "./../store/feature/orderSlice";
 
 function Item(prop) {
 

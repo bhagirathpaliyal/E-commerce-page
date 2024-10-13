@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { fetchProduct, addProduct } from './store/feature/productSlice';
+import { fetchProduct, addProduct } from '../store/feature/productSlice';
 import Item from './Item';
 import { Input, Checkbox, FormControlLabel, FormHelperText } from '@mui/material';
 import { v4 as uuid } from "uuid";

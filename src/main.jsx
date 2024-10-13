@@ -4,7 +4,7 @@ import App from './App.jsx'
 import './index.css'
 import { FirebaseProvider } from '../src/context/firebase.jsx'
 import { Provider } from 'react-redux'
-import { store } from './components/store/store.js'
+import { store } from './store/store.js'
 import { createTheme } from '@mui/material/styles';
 import { ThemeProvider } from '@mui/material/styles';
 const theme = createTheme({

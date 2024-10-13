@@ -4,7 +4,7 @@ import { signOut } from "firebase/auth";
 import { firebaseAuth } from "../context/firebase";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { logOut } from "./store/feature/authSlice";
+import { logOut } from "../store/feature/authSlice";
 import { Button } from "@mui/material";
 const Profile = () => {
   let user = useSelector((state) =>  {

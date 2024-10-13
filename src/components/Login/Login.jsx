@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useFirebase } from "../../context/firebase";
 import { useDispatch, useSelector } from "react-redux";
-import { logInUser } from "../store/feature/authSlice";
+import { logInUser } from "../../store/feature/authSlice";
 
 function Login({isMerchant}) {
   const {  loginUserWithEmailAndPassword } = useFirebase();

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { fetchOrder } from '../store/feature/orderSlice';
+import { fetchOrder } from '../../store/feature/orderSlice';
 import ItemSkeleton from '../ItemSkeleton';
 import OrderCard from './OrderCard';
 
