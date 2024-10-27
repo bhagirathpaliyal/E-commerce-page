@@ -28,8 +28,7 @@ const Profile = () => {
         </div>
 
         <h1>{user?.email}</h1>
-
-        <Link to={"/Order"}>
+{!user?.isMerchant &&   <Link to={"/Order"}>
           {" "}
           <Button
          
@@ -38,7 +37,8 @@ const Profile = () => {
           >
             Your Order
           </Button>
-        </Link>
+        </Link>}
+      
         
 
         <Link to={"/Login"}>

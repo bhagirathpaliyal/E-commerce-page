@@ -8,15 +8,16 @@ import { fetchProduct } from "../store/feature/productSlice";
 import ItemSkeleton from "../components/ItemSkeleton";
 
 function AllProducts() {
-  const [loading, setLoading] = useState(true);
+
   const skeleton = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
   const user = useSelector((state) => state.auth.user);
-  const product = useSelector((state) => state.product.items);
+  const {status, items: product} = useSelector((state) => state.product);
   const dispatch = useDispatch();
+  const loading = !status || status == 'loading' || status == 'idle'
 
   useEffect(() => {
-    if (user) {
-      dispatch(fetchProduct(user.uid)).finally(() => setLoading(false));
+    if (user && (!status || status == 'error' || status == 'idle')) {
+      dispatch(fetchProduct(user.uid));
     }
   }, [user, dispatch]);
   console.log(product);
