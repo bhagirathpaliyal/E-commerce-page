@@ -11,7 +11,7 @@ import {
 import { v4 as uuid } from "uuid";
 const AddProducts = () => {
   const user = useSelector((state) => state.auth.user);
-  const products = useSelector((state) => state.product.items);
+  const products = useSelector((state) => state.product.myItems);
   const dispatch = useDispatch();
 
   const [name, setName] = useState("");
@@ -26,7 +26,7 @@ const AddProducts = () => {
 
   useEffect(() => {
     if (user) {
-      dispatch(fetchProduct(user.uid));
+      dispatch(fetchProduct({userId: user.uid}));
     }
   }, [user, dispatch]);
 
@@ -145,14 +145,13 @@ const AddProducts = () => {
         <div className="text-lg font-bold">Your Products</div>
         <ul className="flex flex-wrap gap-[20px] justify-center">
           {products.map((item, index) =>
-            item.merchant?.email === user.email ? (
+            (
               <Item
                 key={index}
                 index={index + 20}
                 data={item}
-                name={item.merchant.name}
               />
-            ) : null
+            )
           )}
         </ul>
       </div>
