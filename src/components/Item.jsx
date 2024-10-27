@@ -1,17 +1,31 @@
-import { useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "./../store/feature/cartSlice";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import { Button } from "@mui/material";
 import { createOrder } from "./../store/feature/orderSlice";
+import { getDoc } from "firebase/firestore";
 
 function Item(prop) {
   const [status, setStatus] = useState("Ordered");
+  const [merchant, setMerchant] = useState(null);
+  useEffect(() => {
+    load()
+
+      async function load() {
+        if(prop.data.merchantIdRef) {
+          const merchantData = await getDoc(prop.data.merchantIdRef);
+          setMerchant(await merchantData.data());
+          } else {
+            setMerchant(null)
+          }
+      }
+
+  }, [prop.data.merchantIdRef]);
 
   const user = useSelector((state) => {
     return state.auth.user;
   });
-  const products = useSelector((state) => state.product.items);
 
   const dispatch = useDispatch();
 
@@ -36,6 +50,10 @@ function Item(prop) {
         <h2 className="text-[12px] md:text-[15px] ">
           Price : <span className="font-medium ">{prop.data?.price}</span>{" "}
         </h2>
+
+       {  (<h2 className="text-[12px] md:text-[15px] ">
+          Merchant : <span className="font-medium ">{merchant ? merchant.name : "Loading"}</span>{" "}
+        </h2>)}
 
         {!user?.isMerchant && !prop.isCart ? (
           <Button

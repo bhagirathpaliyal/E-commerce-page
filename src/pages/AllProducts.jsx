@@ -16,8 +16,8 @@ function AllProducts() {
   const loading = !status || status == 'loading' || status == 'idle'
 
   useEffect(() => {
-    if (user && (!status || status == 'error' || status == 'idle')) {
-      dispatch(fetchProduct(user.uid));
+    if ((!status || status == 'error' || status == 'idle')) {
+      dispatch(fetchProduct());
     }
   }, [user, dispatch]);
   console.log(product);
