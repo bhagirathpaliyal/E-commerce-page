@@ -19,7 +19,7 @@ function AllProducts() {
     if ((!status || status == 'error' || status == 'idle')) {
       dispatch(fetchProduct());
     }
-  }, [user, dispatch]);
+  }, [user,dispatch]);
   console.log(product);
   return (
     <div className="bg-secondary flex flex-col pt-[50px]">

@@ -19,6 +19,7 @@ export const fetchCartItems = createAsyncThunk(
       cartitem.push({
         ...productData,
         productRef: productDoc.ref
+
       })
     }  
 
@@ -50,9 +51,15 @@ const cartSlice = createSlice({
     builder
       .addCase(fetchCartItems.fulfilled, (state, action) => {
         state.items = action.payload;
+        state.status = "success";
+      })
+      .addCase(fetchCartItems.pending, (state, action) => {
+        console.log(action)
+        state.status = "loading";
       })
       .addCase(fetchCartItems.rejected, (state, action) => {
         console.log(action)
+        state.status = "error";
       })
       .addCase(addToCart.fulfilled, (state, action) => {
         state.items.push(action.payload);

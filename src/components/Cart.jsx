@@ -6,19 +6,20 @@ import ItemSkeleton from './ItemSkeleton';
 
 
 const Cart = () => {
-  const [loading, setLoading] = useState(true); 
+  // const [loading, setLoading] = useState(true); 
   
   const user = useSelector((state) => state.auth.user);
   const dispatch = useDispatch();
   const cartItems = useSelector((state) => state.cart.items);
-  const cartStatus = useSelector((state) => state.cart.status);
+  const status = useSelector((state) => state.cart.status);
 const skeleton=[1,2,3,4,5,6,7,8,9,10,11,12];
-  useEffect(() => {
-    if (user) {
-      dispatch(fetchCartItems(user.uid))
-        .finally(() => setLoading(false)); 
-    }
-  }, [user, dispatch]);
+const loading = !status || status == 'loading' || status == 'idle'
+
+useEffect(() => {
+  if ((!status || status == 'error' || status == 'idle')) {
+    dispatch(fetchCartItems(user.uid));
+  }
+}, [user,dispatch]);
 console.log(cartItems)
   return (
     <div className='mt-[66px] flex flex-col gap-4 items-center'>
@@ -32,7 +33,7 @@ console.log(cartItems)
        </div>
       ) : (
         <>
-          {cartStatus === 'loading' && <p>Loading...</p>}
+         
           <div className='flex flex-wrap gap-[20px] justify-center '>
             {cartItems.length > 0 ? (
               cartItems.map((item, index) => (
