@@ -6,17 +6,19 @@ import OrderCard from './OrderCard';
 
 
 const Order = () => {
-  const [loading, setLoading] = useState(true); 
+  // const [loading, setLoading] = useState(true); 
   const user = useSelector((state) => state.auth.user);
   const dispatch = useDispatch();
   const orderItems = useSelector((state) => state.order.items);
-const skeleton=[1,2,3,4,5,6,7,8,9,10,11,12];
-  useEffect(() => {
-    if (user) {
-      dispatch(fetchOrder())
-        .finally(() => setLoading(false)); 
-    }
-  }, [user, dispatch]);
+  const status = useSelector((state) => state.order.status);
+const skeleton=[...Array(10).keys()]
+const loading = !status || status == 'loading' || status == 'idle'
+
+useEffect(() => {
+  if ((!status || status == 'error' || status == 'idle')) {
+    dispatch(fetchOrder());
+  }
+}, [user,dispatch]);
 
   
 console.log(orderItems)

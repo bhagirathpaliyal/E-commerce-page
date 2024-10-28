@@ -70,13 +70,16 @@ const orderSlice = createSlice({
     builder
       .addCase(fetchOrder.fulfilled, (state, action) => {
         state.items = action.payload;
+        state.status = "success";
       })
       .addCase(fetchOrder.pending, (state, action) => {
         console.log(action)
+        state.status = "loading";
       })
       .addCase(fetchOrder.rejected, (state, action) => {
         
         console.log(action)
+        state.status = "error";
       })
       .addCase(createOrder.fulfilled, (state, action) => {
      
