@@ -34,7 +34,6 @@ export const fetchProduct = createAsyncThunk(
       let totalCount = docs.size;
       let intCount = 0;
       docs.forEach(async (item) => {
-        console.log("Loop Start At => ", Date.now());
         const mainData = await item.data();
         const merchantData = await getDoc(mainData.merchantId);
         let merch = await merchantData.data();
