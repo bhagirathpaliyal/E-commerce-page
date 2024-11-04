@@ -9,8 +9,8 @@ import ItemSkeleton from "../components/ItemSkeleton";
 
 function AllProducts() {
 
-  const skeleton = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
-  const user = useSelector((state) => state.auth.user);
+  const skeleton=[...Array(12).keys()]
+    const user = useSelector((state) => state.auth.user);
   const {status, items: product} = useSelector((state) => state.product);
   const dispatch = useDispatch();
   const loading = !status || status == 'loading' || status == 'idle'

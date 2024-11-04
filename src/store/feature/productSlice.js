@@ -29,14 +29,26 @@ export const fetchProduct = createAsyncThunk(
 
 
     const products = [];
-    let loopStartTime = Date.now();
-    let docss = await docs.docs
-    for(const item of docss) {
-      const mainData = await item.data();
-      products.push({ ...mainData, merchantIdRef: mainData.merchantId, productRef: item.ref });
-    }
 
-    console.log("Loop time => ", Date.now() - loopStartTime);
+    await new Promise((resolve, reject) => {
+      let totalCount = docs.size;
+      let intCount = 0;
+      docs.forEach(async (item) => {
+        console.log("Loop Start At => ", Date.now());
+        const mainData = await item.data();
+        const merchantData = await getDoc(mainData.merchantId);
+        let merch = await merchantData.data();
+        products.push({ ...mainData, merchant: merch, productRef: item.ref });
+        intCount ++;
+        if(intCount >= totalCount) {
+          resolve();
+        }
+      })
+    })
+
+  
+
+   
     return products;
   }
 );
