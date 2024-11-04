@@ -9,15 +9,27 @@ import {
   updateDoc,
   arrayUnion,
   getDocs,
+  query, where,
+
 } from "firebase/firestore";
 
 export const fetchProduct = createAsyncThunk(
   "product/fetchProduct",
-  async () => {
+  async ({userId}) => {
     const productRef = collection(db, "products");
 
-    const docs = await getDocs(productRef);
+
+    let docs = undefined;
+    if(userId) {
+      const merchantRef = doc(db,'merchants',userId);
+      docs = await getDocs(query(productRef, where("merchantId", "==", merchantRef)))
+    } else {
+      docs = await getDocs(productRef)
+    }
+
+
     const products = [];
+
     await new Promise((resolve, reject) => {
       let totalCount = docs.size;
       let intCount = 0;
@@ -33,6 +45,8 @@ export const fetchProduct = createAsyncThunk(
         }
       })
     })
+
+  
 
    
     return products;
@@ -54,13 +68,18 @@ const productSlice = createSlice({
   name: "product",
   initialState: {
     items: [],
+    myItems: [],
     status: "idle",
   },
   reducers: {},
   extraReducers: (builder) => {
     builder
       .addCase(fetchProduct.fulfilled, (state, action) => {
+        if(action.meta?.arg?.userId) {
+          state.myItems = action.payload;
+        } else {
         state.items = action.payload;
+        }
         state.status = "success";
       })
       .addCase(fetchProduct.pending, (state, action) => {
