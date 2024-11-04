@@ -1,31 +1,60 @@
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { db } from "../../context/firebase";
+import {
+  collection,
+  setDoc,
+  doc,
+  getDoc,
+  addDoc,
+  updateDoc,
+  arrayUnion,
+  getDocs,
+  query, where,
 
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { db } from '../../context/firebase';
-import { collection, setDoc, doc, getDoc, addDoc, updateDoc, arrayUnion, getDocs } from "firebase/firestore";
-
-
+} from "firebase/firestore";
 
 export const fetchProduct = createAsyncThunk(
-  'product/fetchProduct',
-  async () => {
-    const productRef = collection(db,'products');
+  "product/fetchProduct",
+  async ({userId}) => {
+    const productRef = collection(db, "products");
 
-    const docs = await getDocs(productRef);
-    const products = []
-    for (const item of docs.docs) {
-      const mainData = await item.data()
-      const merchantData = await getDoc(mainData.merchantId)
-      products.push({...mainData,
-        merchant: await merchantData.data(),
-        productRef: item.ref
+
+    let docs = undefined;
+    if(userId) {
+      const merchantRef = doc(db,'merchants',userId);
+      docs = await getDocs(query(productRef, where("merchantId", "==", merchantRef)))
+    } else {
+      docs = await getDocs(productRef)
+    }
+
+
+    const products = [];
+
+    await new Promise((resolve, reject) => {
+      let totalCount = docs.size;
+      let intCount = 0;
+      docs.forEach(async (item) => {
+        console.log("Loop Start At => ", Date.now());
+        const mainData = await item.data();
+        const merchantData = await getDoc(mainData.merchantId);
+        let merch = await merchantData.data();
+        products.push({ ...mainData, merchant: merch, productRef: item.ref });
+        intCount ++;
+        if(intCount >= totalCount) {
+          resolve();
+        }
       })
-    }  
+    })
+
+  
+
+   
     return products;
   }
 );
 
 export const addProduct = createAsyncThunk(
-  'product/addProduct',
+  "product/addProduct",
   async ({ userId, item }, { getState }) => {
     const productsCollection = collection(db, "products");
       await addDoc(productsCollection, {
@@ -45,7 +74,12 @@ const productSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(fetchProduct.fulfilled, (state, action) => {
+        if(action.meta?.arg?.userId) {
+          state.myItems = action.payload;
+        } else {
         state.items = action.payload;
+        }
+        state.status = "success";
       })
       .addCase(fetchProduct.pending, (state, action) => {
        // state.items = action.payload;
