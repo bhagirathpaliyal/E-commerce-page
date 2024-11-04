@@ -17,7 +17,7 @@ function AllProducts() {
 
   useEffect(() => {
     if ((!status || status == 'error' || status == 'idle')) {
-      dispatch(fetchProduct());
+      dispatch(fetchProduct({}));
     }
   }, [user,dispatch]);
   console.log(product);
