@@ -18,7 +18,6 @@ export const fetchProduct = createAsyncThunk(
 
     const docs = await getDocs(productRef);
     const products = [];
-    let loopStartTime = Date.now();
     await new Promise((resolve, reject) => {
       let totalCount = docs.size;
       let intCount = 0;
@@ -35,7 +34,7 @@ export const fetchProduct = createAsyncThunk(
       })
     })
 
-    console.log("Loop time => ", Date.now() - loopStartTime);
+   
     return products;
   }
 );
