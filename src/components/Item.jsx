@@ -13,8 +13,8 @@ function Item(prop) {
     load()
 
       async function load() {
-        if(prop.data.merchantIdRef) {
-          const merchantData = await getDoc(prop.data.merchantIdRef);
+        if(prop.data.merchantId) {
+          const merchantData = await getDoc(prop.data.merchantId);
           setMerchant(await merchantData.data());
           } else {
             setMerchant(null)
