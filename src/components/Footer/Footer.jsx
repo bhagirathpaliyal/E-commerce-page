@@ -4,7 +4,7 @@ function Footer() {
   const today = new Date();
   return (
     <footer>
-      <div id="section5" className="flex justify-around text-center flex-wrap gap-[20px] bg-[#dfdddd] items-center  p-[50px] font-medium pt-[100px]">
+      <div id="section5" className="flex justify-around text-center flex-wrap gap-[20px] bg-primary items-center  p-[50px] font-medium pt-[100px]">
         <div className="flex flex-col">
           <h2>Let's Connect</h2>
           <Link to={"#"}>
@@ -36,9 +36,29 @@ function Footer() {
           </h2>
         </div>
       </div>
-      <div className="flex flex-col items-center justify-center h-[50px] bg-[#aaa9a9] font-medium">
-        <h2>Made with heart by BP</h2>
-        <h2>Copyright &copy; {today.getFullYear()} </h2>
+      <div className=" py-4 bg-secondary">
+        <div className="w-[100%] mx-auto px-6 flex justify-around items-center flex-wrap">
+         
+          <div className="flex space-x-6">
+            <a href="https://github.com/bhagirathpaliyal" target="_blank" rel="noopener noreferrer" className=" text-[#B0B0B0] hover:text-gray-400">
+              GitHub
+            </a>
+            <a href="https://www.linkedin.com/in/bhagirath-paliyal" target="_blank" rel="noopener noreferrer" className="text-[#B0B0B0] hover:text-gray-400">
+              LinkedIn
+            </a>
+            <a href="https://twitter.com/b_paliyal" target="_blank" rel="noopener noreferrer" className="text-[#B0B0B0] hover:text-gray-400">
+              Twitter
+            </a>
+
+           
+            
+          </div>
+  
+       
+          <div className="text-sm text-[#B0B0B0]">
+            &copy; {new Date().getFullYear()} Bhagirath Paliyal.
+          </div>
+        </div>
       </div>
     </footer>
   );

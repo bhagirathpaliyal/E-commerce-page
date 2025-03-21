@@ -1,7 +1,6 @@
 
 import { useEffect, useState } from "react";
 import Footer from "../../components/Footer/Footer";
-import H_section0 from "../../components/Home/H_section0";
 import Item from "../../components/Item";
 
 function Electronics(){
@@ -19,7 +18,6 @@ function Electronics(){
 
     return(
         <div className="bg-primary flex flex-col gap-[50px] ">
-      <H_section0 />
 
       <div className="flex flex-wrap gap-[20px] justify-center">
         {product.length > 0 &&

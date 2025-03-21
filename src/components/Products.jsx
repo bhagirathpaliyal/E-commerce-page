@@ -1,11 +1,9 @@
 import React from "react";
-import H_section0 from "./Home/H_section0";
 import { NavLink, Outlet } from "react-router-dom";
 
 const Products = () => {
   return (
     <div>
-      <H_section0 />
 
       <div>
         <ul className="flex justify-center gap-[20px] my-[20px]">
