@@ -4,19 +4,19 @@ import { firebaseAuth } from "../context/firebase";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { logOut } from "../store/feature/authSlice";
-import { Button } from "@mui/material";
+import { Button } from "@/components/ui/button";
 const Profile = () => {
-  let user = useSelector((state) =>  {
-    return state.auth.user
+  let user = useSelector((state) => {
+    return state.auth.user;
   });
 
-  const dispatch =useDispatch()
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   useEffect(() => {
     if (!user) {
       navigate("/Login");
     }
-  },[user]);
+  }, [user]);
 
   return (
     <div>
@@ -26,32 +26,28 @@ const Profile = () => {
         </div>
 
         <h1>{user?.email}</h1>
-{!user?.isMerchant &&   <Link to={"/Order"}>
-          {" "}
-          <Button
-         
-            color="inherit"
-            variant="outlined"
-          >
-            Your Order
-          </Button>
-        </Link>}
-      
-        
+        {!user?.isMerchant && (
+          <Link to={"/Order"}>
+            {" "}
+            <Button >
+              Your Order
+            </Button>
+          </Link>
+        )}
 
         <Link to={"/Login"}>
           {" "}
           <Button
-            onClick={() => {signOut(firebaseAuth),dispatch(logOut()),localStorage.removeItem("user");
+            onClick={() => {
+              signOut(firebaseAuth),
+                dispatch(logOut()),
+                localStorage.removeItem("user");
             }}
-            color="inherit"
-            variant="outlined"
+          
           >
             sign out
           </Button>
         </Link>
-
-    
       </div>
     </div>
   );
