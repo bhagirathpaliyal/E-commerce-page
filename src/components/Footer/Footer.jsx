@@ -4,7 +4,7 @@ function Footer() {
   const today = new Date();
   return (
     <footer>
-      <div id="section5" className="flex justify-around text-center flex-wrap gap-[20px] bg-primary items-center  p-[50px] font-medium pt-[100px]">
+      <div id="section5" className="flex justify-around text-center flex-wrap gap-[20px] bg-primary items-center  p-[50px] font-medium pt-[100px] text-[#B0B0B0]">
         <div className="flex flex-col">
           <h2>Let's Connect</h2>
           <Link to={"#"}>

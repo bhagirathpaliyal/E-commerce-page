@@ -3,10 +3,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "./../store/feature/cartSlice";
 import { createOrder } from "./../store/feature/orderSlice";
 import { LazyLoadImage } from "react-lazy-load-image-component";
-import { Button } from "@mui/material";
+// import { Button } from "@mui/material";
 import { getDoc } from "firebase/firestore";
 import ConfirmationDialog from "./ConfirmationDialog";
-
+import { Button } from "@/components/ui/button";
 function Item(prop) {
   const [status, setStatus] = useState("Ordered");
   const [merchant, setMerchant] = useState(null);
@@ -79,13 +79,13 @@ function Item(prop) {
         </h2>
 
         {!user?.isMerchant && !prop.isCart && (
-          <Button variant="contained" onClick={() => handleAction("addToCart")}>
+          <Button  onClick={() => handleAction("addToCart")}>
             Add To Cart
           </Button>
         )}
 
         {prop.isCart && (
-          <Button variant="contained" onClick={() => handleAction("buyNow")}>
+          <Button  onClick={() => handleAction("buyNow")}>
             Buy Now
           </Button>
         )}
